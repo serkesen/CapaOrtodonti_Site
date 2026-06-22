@@ -118,3 +118,25 @@
     font-size: 16px !important;
   }
 }
+
+/* ============================================================
+   KOLON TABAN BOSLUK FIX - 3 ana sutun (col-33/col-100 inner-column)
+   Iceri bitince tabanda fazla bosluk vardi. Kolon padding-bottom +
+   kolon icindeki SON cocugun alt margin'ini sifirla.
+   Genel class -> TR/EN/AR.
+   ============================================================ */
+
+/* Footer ic kolonlarin alt padding'i */
+.elementor-location-footer .elementor-inner-column {
+  padding-bottom: 0 !important;
+}
+
+/* Kolon ic sarmalayicinin (populated) alt padding'i */
+.elementor-location-footer .elementor-inner-column > .elementor-widget-wrap.elementor-element-populated {
+  padding-bottom: 0 !important;
+}
+
+/* Kolon icindeki SON eleman (section/widget) - alt bosluk birak ma */
+.elementor-location-footer .elementor-inner-column > .elementor-widget-wrap > .elementor-element:last-child {
+  margin-bottom: 0 !important;
+}
