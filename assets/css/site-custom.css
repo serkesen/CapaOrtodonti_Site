@@ -162,3 +162,19 @@
 .elementor-location-footer .elementor-inner-column {
   margin-bottom: 0 !important;
 }
+
+/* ============================================================
+   MOBILDE GIZLI OGELERI GOSTER (sosyal ikon dde8e9a + KVKK linki)
+   Bu ogeler Elementor'da "Mobilde Gizle" (elementor-hidden-mobile)
+   isaretli. Elementor ayari duruyor; CSS ile eziyoruz -> mobilde gorunur.
+   Genel class -> TR/EN/AR.
+   ============================================================ */
+@media (max-width: 767px) {
+  .elementor-location-footer .elementor-hidden-mobile {
+    display: block !important;
+  }
+  /* Sosyal ikonlar flex/grid yapisini korusun */
+  .elementor-location-footer .elementor-widget-social-icons.elementor-hidden-mobile {
+    display: block !important;
+  }
+}
