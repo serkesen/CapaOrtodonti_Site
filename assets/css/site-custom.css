@@ -257,3 +257,23 @@
   justify-content: center !important;
   flex-wrap: nowrap !important;
 }
+
+/* ============================================================
+   ADRES BASLIK SECTION PADDING (box model: kutu 36.6 / icerik 17.6 = ~19px fark)
+   Adres basligini saran ic section c73b756 + populated wrap dikey padding'i
+   bosluk yaratiyordu (margin degil PADDING). Sifirla.
+   ============================================================ */
+.elementor-6028 .elementor-element.elementor-element-c73b756 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.elementor-6028 .elementor-element.elementor-element-c73b756 > .elementor-widget-wrap,
+.elementor-6028 .elementor-element.elementor-element-c73b756 .elementor-widget-wrap.elementor-element-populated {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+/* Baslik widget'inin kendi wrap padding'i de sifir */
+.elementor-6028 .elementor-element.elementor-element-83ca76d > .elementor-widget-container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
