@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export PLUGINDIR=/home/d34fcetzlilchq/public_html/wp-content/plugins/CapaOrtodonti_Site
+    - /bin/mkdir -p $PLUGINDIR/assets/css
+    - /usr/bin/rsync -a site-customizations.php $PLUGINDIR/
+    - /usr/bin/rsync -a assets/css/site-custom.css $PLUGINDIR/assets/css/
