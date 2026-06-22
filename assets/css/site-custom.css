@@ -2,37 +2,49 @@
 /* Footer compaction and mobile-first spacing rules go here. */
 
 /* ============================================================
-   FOOTER COMPACTION
-   Hedef: footer ID 6028 (Footer TR). Elementor'un ID-spesifik
-   kurallarini ezmek icin .elementor-6028 prefix + !important.
+   FOOTER COMPACTION (Footer TR, post-6028)
+   Olculen ID'ler hedefli. Elementor cift-class spesifikligini
+   esitlemek icin .elementor-element.elementor-element-XXXX formati.
+   Alt (c) section 9ce8bdd'ye DOKUNULMUYOR (beyaz serit riski).
    NOT: EN/AR footer ID'leri farkli; sonra eklenecek.
    ============================================================ */
 
-/* --- Masaustu + genel: section dikey padding kis --- */
-.elementor-6028 .elementor-section {
+/* En dis section: ust 60->20, alt 30 korunur */
+.elementor-6028 .elementor-element.elementor-element-dec2211 {
   padding-top: 20px !important;
-  padding-bottom: 20px !important;
+  padding-bottom: 30px !important;
 }
 
-/* Section'lar arasi olasi margin'i sifirla */
-.elementor-6028 .elementor-section,
-.elementor-6028 .elementor-top-section {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+/* Blok kolonlari arasi margin-bottom 24 -> 12 */
+.elementor-6028 .elementor-element.elementor-element-c73b756,
+.elementor-6028 .elementor-element.elementor-element-448b7fb,
+.elementor-6028 .elementor-element.elementor-element-d3e5033 {
+  margin-bottom: 12px !important;
 }
 
-/* Widget'lar arasi dikey bosluk */
-.elementor-6028 .elementor-widget:not(:last-child) {
-  margin-bottom: 8px !important;
+/* Calisma saati satirlari arasi bosluk yarila */
+.elementor-6028 .elementor-element.elementor-element-1e7d9be,
+.elementor-6028 .elementor-element.elementor-element-00f0406 {
+  margin-bottom: 6px !important;
+  padding-bottom: 2px !important;
+}
+.elementor-6028 .elementor-element.elementor-element-26d48c1 {
+  padding-bottom: 8px !important;
 }
 
 /* --- Mobil (<=767px): daha da sik --- */
 @media (max-width: 767px) {
-  .elementor-6028 .elementor-section {
+  .elementor-6028 .elementor-element.elementor-element-dec2211 {
     padding-top: 12px !important;
-    padding-bottom: 12px !important;
+    padding-bottom: 20px !important;
   }
-  .elementor-6028 .elementor-widget:not(:last-child) {
-    margin-bottom: 6px !important;
+  .elementor-6028 .elementor-element.elementor-element-c73b756,
+  .elementor-6028 .elementor-element.elementor-element-448b7fb,
+  .elementor-6028 .elementor-element.elementor-element-d3e5033 {
+    margin-bottom: 8px !important;
+  }
+  .elementor-6028 .elementor-element.elementor-element-1e7d9be,
+  .elementor-6028 .elementor-element.elementor-element-00f0406 {
+    margin-bottom: 4px !important;
   }
 }
