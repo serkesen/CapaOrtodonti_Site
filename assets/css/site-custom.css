@@ -60,36 +60,40 @@
 }
 
 /* ============================================================
-   FOOTER COMPACTION P5 - TUM turuncu bosluklar (13 olcum)
-   Genel class hedefli -> TR/EN/AR uctu birden.
-   Suclu: p paragraf margin 30px + widget-wrap populated margin 25-30px
+   FOOTER COMPACTION P6 - DENGELI (P5 cok sikismisti)
+   Yapisan yerlere nefes, iyi olanlar korunur. Genel class -> TR/EN/AR.
    ============================================================ */
 
-/* Tum text-editor paragraflari (Hakkimizda, telefonlar, telif) */
-.elementor-location-footer .elementor-widget-text-editor p,
-.elementor-location-footer .elementor-widget-text-editor {
-  margin-bottom: 6px !important;
-}
-
-/* Kolon ic sarmalayici (populated) - kolonlar arasi asil bosluk */
-.elementor-location-footer .elementor-widget-wrap.elementor-element-populated {
+/* Paragraf metinleri (Hakkimizda govde, telif): sikiya yakin */
+.elementor-location-footer .elementor-widget-text-editor p {
   margin-bottom: 8px !important;
 }
 
-/* Genel widget alt bosluk emniyeti */
+/* Telefon satirlari (22px puntolu p) arasi: okunabilir nefes
+   - text-editor p genel kuraldan sonra geldigi icin bunu ezecek */
+.elementor-location-footer .elementor-widget-text-editor p:not(:last-child) {
+  margin-bottom: 8px !important;
+}
+
+/* Kolon ic sarmalayici (populated): bloklar birbirine girmesin */
+.elementor-location-footer .elementor-widget-wrap.elementor-element-populated {
+  margin-bottom: 18px !important;
+}
+
+/* Genel widget alt bosluk */
 .elementor-location-footer .elementor-widget {
-  margin-bottom: 6px !important;
+  margin-bottom: 8px !important;
 }
 
 @media (max-width: 767px) {
-  .elementor-location-footer .elementor-widget-text-editor p,
-  .elementor-location-footer .elementor-widget-text-editor {
-    margin-bottom: 4px !important;
+  .elementor-location-footer .elementor-widget-text-editor p {
+    margin-bottom: 6px !important;
   }
+  /* Mobilde kolonlar alt alta -> aralarinda net nefes sart */
   .elementor-location-footer .elementor-widget-wrap.elementor-element-populated {
-    margin-bottom: 4px !important;
+    margin-bottom: 14px !important;
   }
   .elementor-location-footer .elementor-widget {
-    margin-bottom: 4px !important;
+    margin-bottom: 6px !important;
   }
 }
