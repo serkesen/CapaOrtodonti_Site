@@ -305,3 +305,20 @@
 .elementor-6028 .elementor-element.elementor-element-da265c7 .elementor-widget-container {
   text-align: center !important;
 }
+
+/* ============================================================
+   ADRES IKON SOL SABIT + YAZI CENTER (sadece mobil, Yorum A)
+   Ev ikonu solda sabit, yazi kolonun ortasinda.
+   Onceki "286f482 icon-list justify-content:center" mobilde ezilir.
+   ============================================================ */
+@media (max-width: 767px) {
+  /* icon-list item: ikon sol, yazi kalan alanda */
+  .elementor-6028 .elementor-element.elementor-element-286f482 .elementor-icon-list-item {
+    justify-content: flex-start !important;
+  }
+  /* Yazi alani buyusun ve icinde ortalansin */
+  .elementor-6028 .elementor-element.elementor-element-286f482 .elementor-icon-list-text {
+    flex: 1 !important;
+    text-align: center !important;
+  }
+}
