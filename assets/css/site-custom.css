@@ -178,3 +178,35 @@
     display: block !important;
   }
 }
+
+/* ============================================================
+   ADRES+TELEFON+HIZALAMA (3 madde tek hamlede)
+   1) Adres kolonu ic bosluklar kis
+   2) Telefon 0212<->0554 arasi (iki <p> arasi) = 0554<->mail (<br>) gibi kucult
+   3) Yayin Kurulu + KVKK + sosyal ikon -> yatay center
+   Genel/ID karisik hedef -> e2a79bd 6028'e ozel, digerleri genel.
+   ============================================================ */
+
+/* 1) ADRES kolonu ic bosluklar */
+.elementor-6028 .elementor-element.elementor-element-83ca76d {
+  margin-bottom: 4px !important;
+}
+.elementor-6028 .elementor-element.elementor-element-c5a9df5 {
+  margin-bottom: 4px !important;
+}
+
+/* 2) TELEFON blok: iki <p> arasi bosluk = <br> arasi gibi kucult */
+.elementor-6028 .elementor-element.elementor-element-e2a79bd p {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* 3) HIZALAMA: Yayin Kurulu + KVKK + sosyal -> center */
+.elementor-6028 .elementor-element.elementor-element-eee89cb,
+.elementor-6028 .elementor-element.elementor-element-e5100fb {
+  text-align: center !important;
+}
+/* Sosyal ikon widget'ini da yatay ortala */
+.elementor-6028 .elementor-element.elementor-element-dde8e9a {
+  text-align: center !important;
+}
