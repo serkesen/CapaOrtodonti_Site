@@ -277,3 +277,31 @@
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
+
+/* ============================================================
+   ADRES+ILETISIM KOLON CENTER + Calisma BASLIK center
+   Adres (286f482) ve Iletisim (5a5560e) kolonlarinda HER SEY center.
+   Calisma basligi (da265c7) center; tablo (gun/saat) DOKUNULMAZ.
+   ============================================================ */
+
+/* Adres + Iletisim kolonlari: tum icerik center */
+.elementor-6028 .elementor-element.elementor-element-286f482,
+.elementor-6028 .elementor-element.elementor-element-286f482 .elementor-widget-container,
+.elementor-6028 .elementor-element.elementor-element-5a5560e,
+.elementor-6028 .elementor-element.elementor-element-5a5560e .elementor-widget-container {
+  text-align: center !important;
+}
+
+/* Adres satiri (icon-list: ev ikonu + yazi) center */
+.elementor-6028 .elementor-element.elementor-element-286f482 .elementor-icon-list-items {
+  justify-content: center !important;
+}
+.elementor-6028 .elementor-element.elementor-element-286f482 .elementor-icon-list-item {
+  justify-content: center !important;
+}
+
+/* Calisma SADECE baslik center (tablo haric) */
+.elementor-6028 .elementor-element.elementor-element-da265c7,
+.elementor-6028 .elementor-element.elementor-element-da265c7 .elementor-widget-container {
+  text-align: center !important;
+}
