@@ -244,26 +244,16 @@
 }
 
 /* ============================================================
-   SOSYAL IKON KESIN CENTER (dde8e9a)
-   Sorun: widget width:auto -> dar kutu sola yapisik. Ic grid.
-   Cozum: widget tam genislik + ic grid justify-content center.
+   SOSYAL IKON CENTER v2 (display:grid HATAYDI -> dikey diziyordu)
+   Ikonlar YAN YANA kalsin (flex row) ama YATAY ORTALANSIN.
    ============================================================ */
 .elementor-6028 .elementor-element.elementor-element-dde8e9a {
   width: 100% !important;
   max-width: 100% !important;
 }
-/* Ic grid container'i ortala (social-icons-wrapper grid'dir) */
-.elementor-6028 .elementor-element.elementor-element-dde8e9a .elementor-social-icons-wrapper,
-.elementor-6028 .elementor-element.elementor-element-dde8e9a .elementor-grid {
+.elementor-6028 .elementor-element.elementor-element-dde8e9a .elementor-social-icons-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
   justify-content: center !important;
-  display: grid !important;
-}
-/* Eger grid degil flex ise emniyet */
-.elementor-6028 .elementor-element.elementor-element-dde8e9a .elementor-widget-container {
-  text-align: center !important;
-}
-.elementor-6028 .elementor-element.elementor-element-dde8e9a .elementor-widget-container > * {
-  justify-content: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  flex-wrap: nowrap !important;
 }
