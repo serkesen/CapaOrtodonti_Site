@@ -1,2 +1,36 @@
 /* Capa Ortodonti - Site-wide custom CSS (version controlled) */
 /* Footer compaction and mobile-first spacing rules go here. */
+
+/* ============================================================
+   FOOTER COMPACTION - sadece mobil (<=767px)
+   Hedef: .elementor-location-footer (TR/EN/AR uctu birden)
+   ============================================================ */
+@media (max-width: 767px) {
+
+  /* Section dikey padding'lerini kis (kisimlar arasi bosluk) */
+  .elementor-location-footer .elementor-section {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+
+  /* Sutun ve widget-wrap ic padding */
+  .elementor-location-footer .elementor-widget-wrap {
+    padding: 0 !important;
+  }
+
+  /* Widget'lar arasi dikey bosluk (baslik -> metin -> ikon) */
+  .elementor-location-footer .elementor-widget:not(:last-child) {
+    margin-bottom: 10px !important;
+  }
+
+  /* Baslik alti bosluk */
+  .elementor-location-footer .elementor-widget-heading {
+    margin-bottom: 6px !important;
+  }
+
+  /* Telefon/iletisim metni iri punto -> kucult, satir araligi sik */
+  .elementor-location-footer .elementor-widget-text-editor,
+  .elementor-location-footer .elementor-widget-icon-list {
+    line-height: 1.4 !important;
+  }
+}
