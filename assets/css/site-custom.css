@@ -210,3 +210,35 @@
 .elementor-6028 .elementor-element.elementor-element-dde8e9a {
   text-align: center !important;
 }
+
+/* ============================================================
+   SOSYAL-CENTER+ADRES+ALTBANT (3 kalan sorun)
+   1) Sosyal ikon flex -> justify-content center (text-align degil)
+   2) Adres baslik-yazi arasi: wrap/section + icon-list margin sifir
+   3) Kapaliyiz<->WhatsApp: alt (c) section 9ce8bdd ust padding kis
+   ============================================================ */
+
+/* 1) SOSYAL IKON yatay center (flex/grid) */
+.elementor-6028 .elementor-element.elementor-element-dde8e9a .elementor-social-icons-wrapper,
+.elementor-6028 .elementor-element.elementor-element-dde8e9a .elementor-grid {
+  justify-content: center !important;
+  display: flex !important;
+}
+
+/* 2) ADRES baslik-yazi arasi bosluk: baslik saran wrap + icon-list ust */
+.elementor-6028 .elementor-element.elementor-element-c5a9df5 {
+  margin-top: 0 !important;
+}
+.elementor-6028 .elementor-element.elementor-element-c5a9df5 .elementor-widget-container {
+  margin-top: 0 !important;
+}
+/* Adres basligini saran ic section'in alt margin'i */
+.elementor-6028 .elementor-element.elementor-element-c73b756 {
+  margin-bottom: 6px !important;
+}
+
+/* 3) ALT BANT: (c) section ust padding kis (Kapaliyiz<->WhatsApp) */
+.elementor-6028 .elementor-element.elementor-element-9ce8bdd {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
