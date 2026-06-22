@@ -95,3 +95,26 @@
     margin-bottom: 6px !important;
   }
 }
+
+/* ============================================================
+   MAIL TASMA FIX (e2a79bd: telefon + mail ayni blokta, <br> ile)
+   Mail global tipografi puntosunda (22px) sutuna sigmiyor,
+   masaustunde Calisma Saatleri'ne biniyordu. Blok fontu kucult +
+   uzun mail kirilsin. NOT: telefon+mail ayni <p>, ayri punto CSS ile
+   mumkun degil (ayirmak icin Elementor'da ayri widget gerekir).
+   ============================================================ */
+.elementor-6028 .elementor-element.elementor-element-e2a79bd {
+  font-size: 18px !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+}
+.elementor-6028 .elementor-element.elementor-element-e2a79bd p {
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+@media (max-width: 767px) {
+  .elementor-6028 .elementor-element.elementor-element-e2a79bd {
+    font-size: 16px !important;
+  }
+}
