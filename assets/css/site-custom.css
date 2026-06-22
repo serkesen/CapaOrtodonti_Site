@@ -140,3 +140,25 @@
 .elementor-location-footer .elementor-inner-column > .elementor-widget-wrap > .elementor-element:last-child {
   margin-bottom: 0 !important;
 }
+
+/* ============================================================
+   GERCEK SUCLU: MARGIN (box model olcumu - yesil alan = margin)
+   Kolon padding degil, en dis section + widget-wrap populated'in
+   MARGIN-BOTTOM'u footer tabaninda dev bosluk birakiyordu.
+   Genel class -> TR/EN/AR.
+   ============================================================ */
+
+/* En dis footer section alt margin */
+.elementor-6028 .elementor-element.elementor-element-dec2211 {
+  margin-bottom: 0 !important;
+}
+
+/* TUM footer widget-wrap populated alt margin (kolonlar + ic) */
+.elementor-location-footer .elementor-widget-wrap.elementor-element-populated {
+  margin-bottom: 0 !important;
+}
+
+/* Ic kolonlarin kendi alt margin'i */
+.elementor-location-footer .elementor-inner-column {
+  margin-bottom: 0 !important;
+}
