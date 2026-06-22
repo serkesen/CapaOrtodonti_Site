@@ -58,3 +58,38 @@
     margin-bottom: 5px !important;
   }
 }
+
+/* ============================================================
+   FOOTER COMPACTION P5 - TUM turuncu bosluklar (13 olcum)
+   Genel class hedefli -> TR/EN/AR uctu birden.
+   Suclu: p paragraf margin 30px + widget-wrap populated margin 25-30px
+   ============================================================ */
+
+/* Tum text-editor paragraflari (Hakkimizda, telefonlar, telif) */
+.elementor-location-footer .elementor-widget-text-editor p,
+.elementor-location-footer .elementor-widget-text-editor {
+  margin-bottom: 6px !important;
+}
+
+/* Kolon ic sarmalayici (populated) - kolonlar arasi asil bosluk */
+.elementor-location-footer .elementor-widget-wrap.elementor-element-populated {
+  margin-bottom: 8px !important;
+}
+
+/* Genel widget alt bosluk emniyeti */
+.elementor-location-footer .elementor-widget {
+  margin-bottom: 6px !important;
+}
+
+@media (max-width: 767px) {
+  .elementor-location-footer .elementor-widget-text-editor p,
+  .elementor-location-footer .elementor-widget-text-editor {
+    margin-bottom: 4px !important;
+  }
+  .elementor-location-footer .elementor-widget-wrap.elementor-element-populated {
+    margin-bottom: 4px !important;
+  }
+  .elementor-location-footer .elementor-widget {
+    margin-bottom: 4px !important;
+  }
+}
