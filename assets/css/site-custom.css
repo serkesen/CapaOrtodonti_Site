@@ -60,40 +60,38 @@
 }
 
 /* ============================================================
-   FOOTER COMPACTION P6 - DENGELI (P5 cok sikismisti)
-   Yapisan yerlere nefes, iyi olanlar korunur. Genel class -> TR/EN/AR.
+   FOOTER COMPACTION P7 - HEDEFLI (P6 genel kurallari korr atisti)
+   Genel .elementor-widget kurali KALDIRILDI (baslik-alti sismesi).
+   widget-wrap alt (c) section'dan muaf (beyaz serit).
+   Genel class -> TR/EN/AR.
    ============================================================ */
 
-/* Paragraf metinleri (Hakkimizda govde, telif): sikiya yakin */
+/* Paragraf metinleri (Hakkimizda govde, telefonlar) */
 .elementor-location-footer .elementor-widget-text-editor p {
   margin-bottom: 8px !important;
 }
 
-/* Telefon satirlari (22px puntolu p) arasi: okunabilir nefes
-   - text-editor p genel kuraldan sonra geldigi icin bunu ezecek */
-.elementor-location-footer .elementor-widget-text-editor p:not(:last-child) {
-  margin-bottom: 8px !important;
+/* Kolon ic sarmalayici: SADECE ust 3 kolon (alt (c) HARIC).
+   Alt (c) section 9ce8bdd icindeki wrap'i disla. */
+.elementor-location-footer .elementor-element-286f482 > .elementor-widget-wrap.elementor-element-populated,
+.elementor-location-footer .elementor-element-5a5560e > .elementor-widget-wrap.elementor-element-populated,
+.elementor-location-footer .elementor-element-adbe432 > .elementor-widget-wrap.elementor-element-populated {
+  margin-bottom: 14px !important;
 }
 
-/* Kolon ic sarmalayici (populated): bloklar birbirine girmesin */
-.elementor-location-footer .elementor-widget-wrap.elementor-element-populated {
-  margin-bottom: 18px !important;
+/* Calisma saati satirlari: SIKI hal geri (P3'te cozmustuk, P6 ezmisti) */
+.elementor-6028 .elementor-element.elementor-element-1e7d9be,
+.elementor-6028 .elementor-element.elementor-element-00f0406 {
+  margin-bottom: 4px !important;
+  padding-bottom: 2px !important;
 }
-
-/* Genel widget alt bosluk */
-.elementor-location-footer .elementor-widget {
-  margin-bottom: 8px !important;
+.elementor-6028 .elementor-element.elementor-element-26d48c1 {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 @media (max-width: 767px) {
   .elementor-location-footer .elementor-widget-text-editor p {
-    margin-bottom: 6px !important;
-  }
-  /* Mobilde kolonlar alt alta -> aralarinda net nefes sart */
-  .elementor-location-footer .elementor-widget-wrap.elementor-element-populated {
-    margin-bottom: 14px !important;
-  }
-  .elementor-location-footer .elementor-widget {
     margin-bottom: 6px !important;
   }
 }
