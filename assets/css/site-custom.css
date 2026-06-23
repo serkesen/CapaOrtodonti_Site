@@ -322,3 +322,18 @@
     text-align: center !important;
   }
 }
+
+
+/* ===== Footer: basliklar sola + tel-mail aralik (TR / 6028) ===== */
+
+/* 1) Adres / Iletisim / Calisma Saatlerimiz basliklari sola */
+.elementor-6028 .elementor-element.elementor-element-83ca76d .elementor-heading-title,
+.elementor-6028 .elementor-element.elementor-element-e2f66d5 .elementor-heading-title,
+.elementor-6028 .elementor-element.elementor-element-da265c7 .elementor-heading-title {
+    text-align: left !important;
+}
+
+/* 2) Iletisim: telefon satiri ile mail satiri arasini ac */
+.elementor-6028 .elementor-element.elementor-element-e2a79bd p:first-child {
+    margin-bottom: 12px !important;
+}
