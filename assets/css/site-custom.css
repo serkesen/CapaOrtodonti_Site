@@ -349,9 +349,20 @@
     }
     .elementor-6028 .elementor-element.elementor-element-adbe432 {
         order: 1 !important;
-        margin-top: 24px !important;
+        margin-top: 12px !important;
     }
     .elementor-6028 .elementor-element.elementor-element-5a5560e {
         order: 2 !important;
+        margin-top: 12px !important;
+    }
+    /* Sosyal ikon alti boslugu azalt (3 katman) */
+    .elementor-6028 .elementor-element.elementor-element-5a5560e > .elementor-element-populated {
+        margin-bottom: 0 !important;
+    }
+    .elementor-6028 .elementor-element.elementor-element-8eaa42b > .elementor-element-populated {
+        padding-bottom: 0 !important;
+    }
+    .elementor-6028 .elementor-element.elementor-element-9ce8bdd {
+        padding-top: 0 !important;
     }
 }
