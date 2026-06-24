@@ -366,3 +366,40 @@
         padding-top: 0 !important;
     }
 }
+
+
+/* ===== Online Randevu sabit CTA (mobil, sol alt, oval) ===== */
+.capa-randevu-fab {
+    display: none;
+}
+@media (max-width: 767px) {
+    .capa-randevu-fab {
+        position: fixed;
+        left: 16px;
+        bottom: 18px;
+        z-index: 9999;
+        width: 80px;
+        height: 70px;
+        border-radius: 50%;
+        background: #0171BA;
+        color: #ffffff !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1px;
+        line-height: 1.15;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+    .capa-randevu-fab span {
+        display: block;
+        color: #ffffff !important;
+    }
+    .capa-randevu-fab:active {
+        transform: scale(0.96);
+    }
+}

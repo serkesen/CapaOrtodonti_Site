@@ -15,3 +15,10 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_style('capa-site-custom', $css_url, array(), filemtime($css_path));
     }
 }, 999);
+
+add_action('wp_footer', function () {
+    if (is_admin()) {
+        return;
+    }
+    echo '<a href="/online-randevu/" class="capa-randevu-fab" aria-label="Online Randevu Al"><span>Online</span><span>Randevu</span></a>';
+});
