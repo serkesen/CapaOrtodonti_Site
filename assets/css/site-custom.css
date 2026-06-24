@@ -454,3 +454,20 @@
         transform: scale(0.96);
     }
 }
+
+
+/* === ANA SAYFA MOBIL KOMPAKTLIK (section dikey padding) === */
+@media (max-width:767px){
+  /* hero + TEDAVILERIMIZDEN: pT/pB 50 -> 24 */
+  body .elementor-element.elementor-element-7301715e,
+  body .elementor-element.elementor-element-49980dee{
+    padding-top:24px !important;
+    padding-bottom:24px !important;
+  }
+  /* Ortodonti + Hekimler icerik: yalniz pB 50 -> 24 (pT 0 kalsin) */
+  body .elementor-element.elementor-element-7dddcb1,
+  body .elementor-element.elementor-element-810de51{
+    padding-bottom:24px !important;
+  }
+}
+/* === /ANA SAYFA MOBIL KOMPAKTLIK === */
