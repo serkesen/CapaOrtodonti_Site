@@ -471,3 +471,23 @@
   }
 }
 /* === /ANA SAYFA MOBIL KOMPAKTLIK === */
+
+
+/* === ANA SAYFA DESKTOP KOMPAKTLIK (section dikey padding) === */
+@media (min-width:768px){
+  /* hero: pT/pB 130 -> 64 */
+  body .elementor-element.elementor-element-7301715e{
+    padding-top:64px !important;
+    padding-bottom:64px !important;
+  }
+  /* Ortodonti + Hekimler: yalniz pB 125 -> 64 */
+  body .elementor-element.elementor-element-7dddcb1,
+  body .elementor-element.elementor-element-810de51{
+    padding-bottom:64px !important;
+  }
+  /* TEDAVILERIMIZDEN: yalniz pB 170 -> 64 (pT 30 dokunma) */
+  body .elementor-element.elementor-element-49980dee{
+    padding-bottom:64px !important;
+  }
+}
+/* === /ANA SAYFA DESKTOP KOMPAKTLIK === */
