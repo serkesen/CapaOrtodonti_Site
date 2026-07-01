@@ -491,3 +491,97 @@
   }
 }
 /* === /ANA SAYFA DESKTOP KOMPAKTLIK === */
+
+
+/* ============================================================
+   TEDAVILERIMIZ KART MODERNIZASYONU (Elementor Posts - Cards skin)
+   Protez sayfasi paletiyle uyumlu: golge, hover-kalkma, yuvarlak kose,
+   mavi baslik, sik "Tedaviyi gor" butonu, gorsel zoom.
+   Site geneli Posts kartlarina uygulanir (A secildi).
+   GERI ALMA: Bu marker blogunu (BASLANGIC..SON) sil + deploy.
+   Renk: Capa mavi #1a6bc4 / koyu #124e91 / teal #16b3a7.
+   ============================================================ */
+
+.elementor-post__card {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 30px -12px rgba(18, 78, 145, 0.18) !important;
+  border: 1px solid #eef3f8 !important;
+  background: #ffffff !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.elementor-post__card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 18px 44px -14px rgba(18, 78, 145, 0.32) !important;
+}
+
+.elementor-post__card .elementor-post__thumbnail {
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+
+.elementor-post__card .elementor-post__text {
+  padding: 22px 22px 20px !important;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.elementor-post__card .elementor-post__title,
+.elementor-post__card .elementor-post__title a {
+  color: #124e91 !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+  margin-bottom: 12px !important;
+  transition: color 0.2s ease !important;
+}
+.elementor-post__card:hover .elementor-post__title a {
+  color: #1a6bc4 !important;
+}
+
+.elementor-post__card .elementor-post__excerpt {
+  color: #5a6b7d !important;
+  line-height: 1.65 !important;
+  margin-bottom: 18px !important;
+  flex: 1 !important;
+}
+
+.elementor-post__card .elementor-post__read-more {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  align-self: flex-start !important;
+  margin-top: auto !important;
+  padding: 9px 20px !important;
+  background: linear-gradient(135deg, #1a6bc4, #124e91) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  border-radius: 99px !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 12px -4px rgba(26, 107, 196, 0.5) !important;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.2s ease !important;
+}
+.elementor-post__card .elementor-post__read-more:hover {
+  background: linear-gradient(135deg, #16b3a7, #0f8f85) !important;
+  transform: translateX(3px) !important;
+  box-shadow: 0 6px 16px -4px rgba(22, 179, 167, 0.55) !important;
+}
+
+.elementor-posts-container.elementor-grid {
+  gap: 26px !important;
+}
+
+@media (max-width: 767px) {
+  .elementor-post__card .elementor-post__text {
+    padding: 18px 18px 16px !important;
+  }
+  .elementor-posts-container.elementor-grid {
+    gap: 18px !important;
+  }
+}
+/* === /TEDAVILERIMIZ KART MODERNIZASYONU === */
