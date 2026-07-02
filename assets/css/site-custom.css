@@ -585,3 +585,11 @@
   }
 }
 /* === /TEDAVILERIMIZ KART MODERNIZASYONU === */
+
+/* === ONLINE RANDEVU BUTON NOWRAP (desktop) === */
+@media (min-width: 1025px) {
+  .elementor-element-4ecf6acd a.elementor-button {
+    white-space: nowrap !important;
+  }
+}
+/* === /ONLINE RANDEVU BUTON NOWRAP (desktop) === */
