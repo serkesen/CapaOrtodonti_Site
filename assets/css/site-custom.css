@@ -613,3 +613,10 @@
 /* === TAG LINKS GIZLE (Hello Elementor otomatik etiket bloğu) === */
 .post-tags { display: none !important; }
 /* === /TAG LINKS GIZLE === */
+
+
+/* === PROTEZ SAYFA GOLGE BASLIK GIZLE (post 8886) === */
+body.postid-8886 .page-header,
+body.postid-8886 .entry-title,
+body.postid-8886 .page-title { display: none !important; }
+/* === /PROTEZ SAYFA GOLGE BASLIK GIZLE === */
