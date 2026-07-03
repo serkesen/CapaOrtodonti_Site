@@ -608,3 +608,8 @@
   margin-bottom: 8px !important;
 }
 /* === /HOSGELDINIZ ICI BOSLUK KISALTMA === */
+
+
+/* === TAG LINKS GIZLE (Hello Elementor otomatik etiket bloğu) === */
+.post-tags { display: none !important; }
+/* === /TAG LINKS GIZLE === */
