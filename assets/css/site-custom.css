@@ -618,5 +618,8 @@
 /* === PROTEZ SAYFA GOLGE BASLIK GIZLE (post 8886) === */
 body.postid-8886 .page-header,
 body.postid-8886 .entry-title,
-body.postid-8886 .page-title { display: none !important; }
+body.postid-8886 .page-title,
+body.page-id-8886 .page-header,
+body.page-id-8886 .entry-title,
+body.page-id-8886 .page-title { display: none !important; }
 /* === /PROTEZ SAYFA GOLGE BASLIK GIZLE === */
