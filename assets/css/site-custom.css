@@ -593,3 +593,18 @@
   }
 }
 /* === /ONLINE RANDEVU BUTON NOWRAP (desktop) === */
+
+/* === HOSGELDINIZ ICI BOSLUK KISALTMA === */
+/* Paragraf son satir alt boslugu (metin ceercevesi ici) */
+.elementor-element-76b5b135 p {
+  margin-bottom: 8px !important;
+}
+/* Yuvarlak resim ile baslik arasi bosluk */
+.elementor-element-34ac984b {
+  margin-bottom: 8px !important;
+}
+/* Resim kolonu wrap alt boslugu (baslik ile arasi) */
+.elementor-element-4e5c5f56 > .elementor-widget-wrap {
+  margin-bottom: 8px !important;
+}
+/* === /HOSGELDINIZ ICI BOSLUK KISALTMA === */
