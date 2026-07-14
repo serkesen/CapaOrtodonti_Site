@@ -630,3 +630,36 @@ body.page-id-8886 .page-title { display: none !important; }
 .elementor-location-header .elementor-nav-menu a.elementor-item:focus{color:#0f9b8e !important;}
 .elementor-location-header a.elementor-button{box-shadow:0 6px 18px rgba(217,117,43,.28);transition:transform .2s ease,box-shadow .2s ease !important;}
 .elementor-location-header a.elementor-button:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(217,117,43,.42);}
+
+/* ===== Header dropdown menu: beyaz zemin, mavi yazi, teal hover (desktop + mobil) ===== */
+.elementor-location-header .elementor-nav-menu .sub-menu{
+  background:#ffffff !important;
+  border:1px solid #e6eef8 !important;
+  border-radius:12px !important;
+  box-shadow:0 14px 34px rgba(15,63,121,.15) !important;
+  padding:8px !important;
+  overflow:hidden;
+}
+.elementor-location-header .elementor-nav-menu .sub-menu a{
+  color:#124e91 !important;
+  font-weight:600 !important;
+  border-radius:8px !important;
+}
+.elementor-location-header .elementor-nav-menu .sub-menu a:hover,
+.elementor-location-header .elementor-nav-menu .sub-menu a:focus{
+  background:#eef4fb !important;
+  color:#0f9b8e !important;
+}
+.elementor-location-header .elementor-nav-menu--dropdown{
+  background:#ffffff !important;
+  border-radius:12px !important;
+  box-shadow:0 14px 34px rgba(15,63,121,.15) !important;
+}
+.elementor-location-header .elementor-nav-menu--dropdown a.elementor-item{
+  color:#124e91 !important;
+}
+.elementor-location-header .elementor-nav-menu--dropdown a.elementor-item:hover,
+.elementor-location-header .elementor-nav-menu--dropdown a.elementor-item.elementor-item-active{
+  background:#eef4fb !important;
+  color:#0f9b8e !important;
+}
