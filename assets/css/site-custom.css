@@ -375,9 +375,9 @@
 @media (max-width: 767px) {
     .capa-randevu-fab {
         position: fixed;
-        right: 12px;
+        right: 20px;
         left: auto;
-        bottom: 12px;
+        bottom: 20px;
         z-index: 9999;
         height: 60px;
         padding: 0 16px;
@@ -419,9 +419,9 @@
     .capa-randevu-fab {
         display: flex;
         position: fixed;
-        right: 12px;
+        right: 20px;
         left: auto;
-        bottom: 12px;
+        bottom: 20px;
         z-index: 9999;
         height: 42px;
         padding: 0 18px;
