@@ -683,14 +683,3 @@ body.page-id-8886 .page-title { display: none !important; }
 .elementor-location-header .elementor-nav-menu__container,
 .elementor-location-header nav.elementor-nav-menu--dropdown,
 .elementor-location-header .elementor-nav-menu--dropdown ul.sub-menu{background-color:#fff !important;}
-
-/* Mobil dropdown: panel tam genislik + kose radius 0 -> arkadaki sayfa (slider) sizmasin */
-.elementor-location-header nav.elementor-nav-menu--dropdown{
-  left:0 !important;
-  right:0 !important;
-  width:100% !important;
-  max-width:100% !important;
-  margin-left:0 !important;
-  margin-right:0 !important;
-  border-radius:0 !important;
-}
