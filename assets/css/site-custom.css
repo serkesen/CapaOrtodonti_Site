@@ -696,3 +696,20 @@ body.page-id-8886 .page-title { display: none !important; }
   background:#fff !important;
   z-index:98 !important;
 }
+
+/* Mobil overlay adim 2: panel header altindan baslar, header/logo/X gorunur kalir */
+.elementor-location-header nav.elementor-nav-menu--dropdown[aria-hidden="false"]{
+  top:101px !important;
+  height:calc(100vh - 101px) !important;
+  height:calc(100dvh - 101px) !important;
+  max-height:calc(100vh - 101px) !important;
+  max-height:calc(100dvh - 101px) !important;
+  padding-top:10px !important;
+  box-shadow:none !important;
+}
+/* Emniyet: logo ve X (toggle) her durumda panelin ustunde */
+.elementor-location-header .elementor-menu-toggle,
+.elementor-location-header .elementor-widget-image{
+  position:relative !important;
+  z-index:99 !important;
+}
