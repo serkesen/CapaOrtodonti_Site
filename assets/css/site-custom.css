@@ -663,3 +663,7 @@ body.page-id-8886 .page-title { display: none !important; }
   background:#eef4fb !important;
   color:#0f9b8e !important;
 }
+
+/* Mobil dropdown: ogeler sola yapismasin, yatay dolgu */
+.elementor-location-header .elementor-nav-menu--dropdown a.elementor-item,
+.elementor-location-header .elementor-nav-menu--dropdown a.elementor-sub-item{padding-left:22px !important;padding-right:22px !important;}
