@@ -623,3 +623,10 @@ body.page-id-8886 .page-header,
 body.page-id-8886 .entry-title,
 body.page-id-8886 .page-title { display: none !important; }
 /* === /PROTEZ SAYFA GOLGE BASLIK GIZLE === */
+
+/* ===== Header iyilestirmeleri: sticky alt golge + menu teal hover + buton golge/hover ===== */
+.elementor-location-header .elementor-sticky--active{box-shadow:0 4px 20px rgba(15,63,121,.10);}
+.elementor-location-header .elementor-nav-menu a.elementor-item:hover,
+.elementor-location-header .elementor-nav-menu a.elementor-item:focus{color:#0f9b8e !important;}
+.elementor-location-header a.elementor-button{box-shadow:0 6px 18px rgba(217,117,43,.28);transition:transform .2s ease,box-shadow .2s ease !important;}
+.elementor-location-header a.elementor-button:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(217,117,43,.42);}
