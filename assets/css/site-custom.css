@@ -676,3 +676,10 @@ body.page-id-8886 .page-title { display: none !important; }
 /* Mobil dropdown punto: ana menu 18px, alt menu 1px kucuk (17px) + net */
 .elementor-location-header .elementor-nav-menu--dropdown a.elementor-item{font-size:18px !important;}
 .elementor-location-header .elementor-nav-menu--dropdown a.elementor-sub-item{font-size:17px !important;font-weight:600 !important;}
+
+/* Alt menu 16px */
+.elementor-location-header .elementor-nav-menu--dropdown a.elementor-sub-item{font-size:16px !important;}
+/* Mobil dropdown cevresindeki gri zemin: tum container katmanlari beyaz */
+.elementor-location-header .elementor-nav-menu__container,
+.elementor-location-header nav.elementor-nav-menu--dropdown,
+.elementor-location-header .elementor-nav-menu--dropdown ul.sub-menu{background-color:#fff !important;}
