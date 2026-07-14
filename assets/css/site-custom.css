@@ -672,3 +672,7 @@ body.page-id-8886 .page-title { display: none !important; }
 .elementor-location-header .elementor-nav-menu--dropdown a.elementor-sub-item{color:#124e91 !important;font-weight:600 !important;}
 .elementor-location-header .elementor-nav-menu--dropdown a.elementor-sub-item:hover,
 .elementor-location-header .elementor-nav-menu--dropdown a.elementor-sub-item.elementor-item-active{background:#eef4fb !important;color:#0f9b8e !important;}
+
+/* Mobil dropdown punto: ana menu 18px, alt menu 1px kucuk (17px) + net */
+.elementor-location-header .elementor-nav-menu--dropdown a.elementor-item{font-size:18px !important;}
+.elementor-location-header .elementor-nav-menu--dropdown a.elementor-sub-item{font-size:17px !important;font-weight:600 !important;}
