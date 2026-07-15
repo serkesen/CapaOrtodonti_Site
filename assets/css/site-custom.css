@@ -749,3 +749,9 @@ body.page-id-8886 .page-title { display: none !important; }
   padding:14px 10px 14px 64px !important;
   margin:-14px 0 -14px auto !important;
 }
+
+/* Dil secici (Polylang): yazi bayragin yanina yaslansin (space-between ezilir) */
+.elementor-location-header .elementor-nav-menu--dropdown .lang-item a{
+  justify-content:flex-start !important;
+  gap:8px !important;
+}
