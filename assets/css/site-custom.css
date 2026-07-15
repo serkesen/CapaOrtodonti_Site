@@ -796,3 +796,7 @@ body.single-post .elementor-post__title a{color:#124e91 !important}
 body.single-post .elementor-widget-icon-box > .elementor-widget-container{background:linear-gradient(135deg,#1c74d4,#134c8f,#0f3f79);border-radius:20px;padding:30px 34px 32px;box-shadow:0 18px 40px rgba(15,63,121,.20)}
 body.single-post .elementor-widget-icon-box .elementor-icon-box-title,body.single-post .elementor-widget-icon-box .elementor-icon-box-title *{color:#fff !important}
 body.single-post .elementor-widget-icon-box .elementor-icon-box-description{color:rgba(255,255,255,.85) !important}
+
+/* Yazi sayfalari: sag "Guncel Tedavi ve Bilgiler" panelini kaldir, icerigi ortala */
+body.single-post .elementor-element-7564cd68{display:none !important}
+body.single-post .elementor-element-17d2d652{max-width:880px !important;width:100% !important;flex:1 1 auto !important;margin-left:auto !important;margin-right:auto !important}
