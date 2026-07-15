@@ -69,3 +69,10 @@ add_filter('the_content', function ($content) {
     }
     return $content;
 }, 20);
+
+add_action('wp_head', function () {
+    if (is_singular('post') && has_post_thumbnail()) {
+        $u = esc_url(get_the_post_thumbnail_url(get_the_ID(), 'large'));
+        echo '<style id="capa-post-hero">body.single-post .elementor-widget-icon-box > .elementor-widget-container{background-image:linear-gradient(120deg,rgba(23,86,170,.93),rgba(16,66,124,.86) 55%,rgba(12,52,99,.82)),url(' . $u . ') !important;background-size:cover !important;background-position:center !important}</style>';
+    }
+}, 100);

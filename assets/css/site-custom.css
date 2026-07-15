@@ -813,3 +813,8 @@ body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-btn{di
 body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-o{background:#d9752b;color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.18)}
 body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-w{border:1.6px solid rgba(255,255,255,.75);color:#fff}
 body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-btn:hover{transform:translateY(-2px)}
+
+/* Yazi sayfalari: alt one-cikan gorseli gizle + CTA buton yazisi beyaz + hero ic bosluk */
+body.single-post .elementor-widget-theme-post-featured-image{display:none !important}
+body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-btn{color:#fff !important}
+body.single-post .elementor-widget-icon-box > .elementor-widget-container{padding:42px 34px 44px !important}
