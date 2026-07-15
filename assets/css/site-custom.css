@@ -769,3 +769,25 @@ body.page-id-5208 .elementor-post__read-more{margin-bottom:6px !important;}
 
 /* /tedaviler/ (5208) v3: ust bosluk logoya degmesin diye biraz artir */
 body.page-id-5208 main .elementor-top-section{margin-top:48px !important;}
+
+/* Saglik/blog yazi sayfalari - Fable tipografi (icerik degismez) */
+body.single-post .elementor-widget-theme-post-content{color:#43546e}
+body.single-post .elementor-widget-theme-post-content p{color:#43546e !important;font-size:16.5px !important;line-height:1.8 !important;margin:0 0 18px !important}
+body.single-post .elementor-widget-theme-post-content h2{color:#124e91 !important;font-size:24px !important;font-weight:800 !important;line-height:1.3 !important;margin:34px 0 12px !important}
+body.single-post .elementor-widget-theme-post-content h3{color:#124e91 !important;font-size:19px !important;font-weight:700 !important;line-height:1.35 !important;margin:26px 0 10px !important}
+body.single-post .elementor-widget-theme-post-content h4{color:#0f335f !important;font-size:17px !important;font-weight:700 !important;margin:22px 0 8px !important}
+body.single-post .elementor-widget-theme-post-content a{color:#0f9b8e !important;font-weight:600;text-decoration:none}
+body.single-post .elementor-widget-theme-post-content a:hover{text-decoration:underline}
+body.single-post .elementor-widget-theme-post-content strong,body.single-post .elementor-widget-theme-post-content b{color:#2b3b52}
+body.single-post .elementor-widget-theme-post-content img{border-radius:14px;box-shadow:0 10px 26px rgba(16,60,120,.10);height:auto;max-width:100%;margin:10px 0}
+body.single-post .elementor-widget-theme-post-content ul,body.single-post .elementor-widget-theme-post-content ol{color:#43546e;padding-left:22px;margin:0 0 18px;line-height:1.8}
+body.single-post .elementor-widget-theme-post-content li{margin-bottom:8px}
+body.single-post .elementor-widget-theme-post-content ul li::marker{color:#0f9b8e}
+body.single-post .elementor-widget-theme-post-content blockquote{border-left:4px solid #0f9b8e;background:#eef6f5;margin:22px 0;padding:14px 20px;border-radius:0 12px 12px 0;color:#33465f}
+body.single-post .elementor-widget-theme-post-content table{border-collapse:collapse;width:100%;margin:22px 0;font-size:15px}
+body.single-post .elementor-widget-theme-post-content th{background:#124e91;color:#fff;padding:11px 13px;text-align:left;font-weight:700}
+body.single-post .elementor-widget-theme-post-content td{border:1px solid #e7eef7;padding:11px 13px;color:#43546e}
+body.single-post .elementor-widget-theme-post-content tr:nth-child(even) td{background:#f7fafd}
+body.single-post h1{color:#0f335f !important}
+body.single-post .elementor-post__card{border-radius:16px;overflow:hidden;border:1px solid #e7eef7;box-shadow:0 8px 22px rgba(16,60,120,.06)}
+body.single-post .elementor-post__title a{color:#124e91 !important}
