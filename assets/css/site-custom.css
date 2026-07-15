@@ -766,3 +766,6 @@ body.page-id-5208 .page-header{display:none !important;}
 body.page-id-5208 main .elementor-top-section{margin-top:8px !important;margin-bottom:0 !important;}
 body.page-id-5208 .elementor-post__text{padding-bottom:10px !important;}
 body.page-id-5208 .elementor-post__read-more{margin-bottom:6px !important;}
+
+/* /tedaviler/ (5208) v3: ust bosluk logoya degmesin diye biraz artir */
+body.page-id-5208 main .elementor-top-section{margin-top:48px !important;}
