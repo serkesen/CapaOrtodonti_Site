@@ -725,3 +725,21 @@ body.page-id-8886 .page-title { display: none !important; }
   background:#e3f4f2 !important;
   color:#0f9b8e !important;
 }
+
+/* Mobil dropdown: alt menu oku sag kenarda + genis dokunma alani */
+.elementor-location-header .elementor-nav-menu--dropdown a.elementor-item,
+.elementor-location-header .elementor-nav-menu--dropdown a.elementor-sub-item{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+}
+.elementor-location-header .elementor-nav-menu--dropdown .sub-arrow{
+  margin-left:auto !important;
+  padding:6px 10px !important;
+}
+
+/* Desktop alt menu: yazi sola yaklassin (22px -> 12px) */
+.elementor-location-header .elementor-nav-menu--main .sub-menu a{
+  padding-left:12px !important;
+  padding-right:12px !important;
+}
