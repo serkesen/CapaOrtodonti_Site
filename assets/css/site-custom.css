@@ -755,3 +755,8 @@ body.page-id-8886 .page-title { display: none !important; }
   justify-content:flex-start !important;
   gap:8px !important;
 }
+
+/* /tedaviler/ (page-id 5208): ust bar ve footer ile asiri boslugu kis */
+body.page-id-5208 .page-header{margin:0 !important;padding-top:6px !important;}
+body.page-id-5208 .page-header .entry-title{margin:0 0 4px !important;}
+body.page-id-5208 main .elementor-top-section{margin-top:6px !important;margin-bottom:20px !important;}
