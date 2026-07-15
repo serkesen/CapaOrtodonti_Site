@@ -760,3 +760,9 @@ body.page-id-8886 .page-title { display: none !important; }
 body.page-id-5208 .page-header{margin:0 !important;padding-top:6px !important;}
 body.page-id-5208 .page-header .entry-title{margin:0 0 4px !important;}
 body.page-id-5208 main .elementor-top-section{margin-top:6px !important;margin-bottom:20px !important;}
+
+/* /tedaviler/ (5208) v2: tema basligi gizle (ust) + alt boslugu iyice kis */
+body.page-id-5208 .page-header{display:none !important;}
+body.page-id-5208 main .elementor-top-section{margin-top:8px !important;margin-bottom:0 !important;}
+body.page-id-5208 .elementor-post__text{padding-bottom:10px !important;}
+body.page-id-5208 .elementor-post__read-more{margin-bottom:6px !important;}
