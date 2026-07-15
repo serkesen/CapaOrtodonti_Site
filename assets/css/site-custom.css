@@ -791,3 +791,8 @@ body.single-post .elementor-widget-theme-post-content tr:nth-child(even) td{back
 body.single-post h1{color:#0f335f !important}
 body.single-post .elementor-post__card{border-radius:16px;overflow:hidden;border:1px solid #e7eef7;box-shadow:0 8px 22px rgba(16,60,120,.06)}
 body.single-post .elementor-post__title a{color:#124e91 !important}
+
+/* Yazi basligi: tedavi-hero benzeri mavi gradyan bant */
+body.single-post .elementor-widget-icon-box > .elementor-widget-container{background:linear-gradient(135deg,#1c74d4,#134c8f,#0f3f79);border-radius:20px;padding:30px 34px 32px;box-shadow:0 18px 40px rgba(15,63,121,.20)}
+body.single-post .elementor-widget-icon-box .elementor-icon-box-title,body.single-post .elementor-widget-icon-box .elementor-icon-box-title *{color:#fff !important}
+body.single-post .elementor-widget-icon-box .elementor-icon-box-description{color:rgba(255,255,255,.85) !important}
