@@ -818,3 +818,6 @@ body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-btn:ho
 body.single-post .elementor-widget-theme-post-featured-image{display:none !important}
 body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-btn{color:#fff !important}
 body.single-post .elementor-widget-icon-box > .elementor-widget-container{padding:42px 34px 44px !important}
+
+/* Kategori (arsiv) hero basligi: Fable deep-blue gradyan */
+body.category .elementor-element-337424a{background-image:linear-gradient(135deg,#1c74d4,#134c8f,#0f3f79) !important;background-color:#134c8f !important}
