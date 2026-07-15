@@ -803,3 +803,13 @@ body.single-post .elementor-element-17d2d652{max-width:880px !important;width:10
 
 /* Yazi sayfalari: yazar/Guncellenme Tarihi meta satirini kaldir */
 body.single-post .elementor-widget-post-info{display:none !important}
+
+/* Yazi sayfalari: icerik sonu Online Randevu CTA */
+body.single-post .elementor-widget-theme-post-content .capa-post-cta{position:relative;overflow:hidden;margin:36px 0 6px;background:linear-gradient(135deg,#14a99a,#0e857b,#0b625c);border-radius:20px;padding:32px 26px;text-align:center;color:#fff;box-shadow:0 18px 40px rgba(11,98,92,.25)}
+body.single-post .elementor-widget-theme-post-content .capa-post-cta h3{margin:0 0 8px !important;color:#fff !important;font-size:22px !important;font-weight:800 !important}
+body.single-post .elementor-widget-theme-post-content .capa-post-cta p{margin:0 auto !important;max-width:520px !important;color:rgba(255,255,255,.9) !important;font-size:15px !important;line-height:1.6 !important}
+body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:20px}
+body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:999px;font-weight:700;font-size:14.5px;text-decoration:none;transition:transform .2s}
+body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-o{background:#d9752b;color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-w{border:1.6px solid rgba(255,255,255,.75);color:#fff}
+body.single-post .elementor-widget-theme-post-content .capa-post-cta .cpc-btn:hover{transform:translateY(-2px)}

@@ -60,3 +60,12 @@ add_action('wp_footer', function () {
 </script>
     <?php
 });
+
+add_filter('the_content', function ($content) {
+    if (is_admin() || is_feed()) return $content;
+    if (is_singular('post') && is_main_query() && in_the_loop()) {
+        $cta = '<div class="capa-post-cta"><h3>G&#252;l&#252;&#351;&#252;n&#252;z i&#231;in ilk ad&#305;m&#305; at&#305;n</h3><p>&#304;lk muayenenizde hekimlerimiz sizi birlikte de&#287;erlendirsin, size &#246;zel tedavi plan&#305;n&#305;z&#305; beraber olu&#351;tural&#305;m.</p><div class="cpc-btns"><a class="cpc-btn cpc-o" href="/online-randevu/">Online Randevu Al</a><a class="cpc-btn cpc-w" href="https://wa.me/905548319411" target="_blank" rel="noopener">WhatsApp</a></div></div>';
+        return $content . $cta;
+    }
+    return $content;
+}, 20);
