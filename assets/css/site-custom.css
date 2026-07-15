@@ -800,3 +800,6 @@ body.single-post .elementor-widget-icon-box .elementor-icon-box-description{colo
 /* Yazi sayfalari: sag "Guncel Tedavi ve Bilgiler" panelini kaldir, icerigi ortala */
 body.single-post .elementor-element-7564cd68{display:none !important}
 body.single-post .elementor-element-17d2d652{max-width:880px !important;width:100% !important;flex:1 1 auto !important;margin-left:auto !important;margin-right:auto !important}
+
+/* Yazi sayfalari: yazar/Guncellenme Tarihi meta satirini kaldir */
+body.single-post .elementor-widget-post-info{display:none !important}
