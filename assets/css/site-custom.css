@@ -829,3 +829,9 @@ body.single-post .elementor-widget-icon-box > .elementor-widget-container{paddin
 body.category .elementor-element-337424a{background-image:none !important;background-color:#f5f8fc !important;padding-top:26px !important;padding-bottom:26px !important}
 body.category .elementor-element-337424a > .elementor-container{background-image:linear-gradient(120deg,rgba(15,63,121,.88),rgba(19,76,143,.55) 55%,rgba(28,116,212,.2)),url(/wp-content/uploads/bg1-1.jpg);background-size:cover;background-position:center;border-radius:24px;padding:46px 40px;box-shadow:0 16px 40px rgba(16,60,120,.16)}
 @media(max-width:767px){body.category .elementor-element-337424a{padding-left:14px !important;padding-right:14px !important;padding-top:14px !important;padding-bottom:14px !important}body.category .elementor-element-337424a > .elementor-container{padding:30px 22px;border-radius:18px}}
+
+
+/* Kategori arsiv hero yukseklik kisaltma (~%25) */
+body.category .elementor-element-337424a{padding-top:14px !important;padding-bottom:14px !important}
+body.category .elementor-element-337424a > .elementor-container{padding:30px 40px}
+body.category .elementor-element-337424a .elementor-widget-image img{max-height:230px;width:auto}
