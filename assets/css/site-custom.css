@@ -842,3 +842,7 @@ body.category .elementor-element-7c88261f .elementor-heading-title{color:#fff !i
 body.category .elementor-element-7c88261f .elementor-heading-title em{color:#8fe6dd;font-style:italic}
 body.category .elementor-element-12e9993a p{color:rgba(255,255,255,.88) !important;font-size:17px !important;line-height:1.75 !important}
 body.category .elementor-element-12e9993a strong{font-weight:400}
+
+
+/* Kategori arsiv kart etiketi: kucuk + sag ust koseye yakin */
+body.category .elementor-post__badge{font-size:10px !important;padding:4px 10px !important;margin:10px !important;letter-spacing:.4px}
