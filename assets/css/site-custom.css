@@ -835,3 +835,10 @@ body.category .elementor-element-337424a > .elementor-container{background-image
 body.category .elementor-element-337424a{padding-top:14px !important;padding-bottom:14px !important}
 body.category .elementor-element-337424a > .elementor-container{padding:30px 40px}
 body.category .elementor-element-337424a .elementor-widget-image img{max-height:230px;width:auto}
+
+
+/* Kategori arsiv hero Fable tipografi */
+body.category .elementor-element-7c88261f .elementor-heading-title{color:#fff !important;font-size:clamp(30px,5vw,52px) !important;font-weight:800 !important;line-height:1.14 !important;letter-spacing:-.02em !important}
+body.category .elementor-element-7c88261f .elementor-heading-title em{color:#8fe6dd;font-style:italic}
+body.category .elementor-element-12e9993a p{color:rgba(255,255,255,.88) !important;font-size:17px !important;line-height:1.75 !important}
+body.category .elementor-element-12e9993a strong{font-weight:400}
