@@ -827,3 +827,7 @@ body.category .elementor-element-337424a{background-image:linear-gradient(135deg
 
 /* Hakkimizda: SSS bolumunu (Merak ettikleriniz / Kliniğimizi daha yakından tanıyın) kaldir */
 #hakkimizda-page .hp-faq{display:none !important}
+
+/* Hakkimizda: hp-story gorselleri artik HTML'de; eski CSS gorselini kapat + img stili */
+#hakkimizda-page .hp-story-intro::after{content:none !important}
+#hakkimizda-page .hp-story-intro img{display:block;width:100%;height:auto;margin-top:22px;border-radius:16px;box-shadow:0 14px 34px rgba(16,60,120,.12)}
