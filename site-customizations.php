@@ -114,3 +114,63 @@ add_action('wp_head', function () {
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "
 ";
 }, 99);
+
+/* capa-faq-system: Tek kaynak FAQ - gorunur SSS (the_content) + FAQPage schema (wp_head). Gorunur metin ile schema birebir ayni. */
+if (!function_exists('capa_faqs')) {
+    function capa_faqs() {
+        return array(
+            8062 => array(
+                array('Diş teli fiyatları neden kliniğe göre değişir?', 'Braket sistemi, tahmini tedavi süresi, hekimin uzmanlığı ve tedaviye dahil edilen hizmetler (kontroller, röntgen, retainer) her klinikte farklı olduğu için toplam maliyet de değişir.'),
+                array('Tek çene diş teli daha mı ekonomiktir?', 'Kapsam daraldığı için tek çene tedavisi genellikle daha düşük maliyetlidir. Ancak dişlerin doğru kapanışı için çoğu vakada çift çene tedavisi önerilir; bu karar muayenede verilir.'),
+                array('Diş teli tedavisi ne kadar sürer?', 'Vakanın zorluğuna göre değişmekle birlikte tedavi çoğunlukla 12–24 ay arasında sürer. Süre uzadıkça kontrol sayısı ve toplam maliyet de etkilenir.'),
+                array('Şeffaf plak diş telinden pahalı mıdır?', 'Şeffaf plak sistemleri, üretim teknolojisi nedeniyle genellikle metal braketlere göre daha yüksek maliyetlidir. Size uygun seçenek muayenede belirlenir.'),
+                array('Diş teli için hangi bölüme gidilir?', 'Diş teli tedavisi ortodonti bölümüne aittir; tedaviyi ortodonti uzmanı (ortodontist) planlar ve yürütür.'),
+                array('Devlet hastanelerinde diş teli takılıyor mu?', 'Bazı devlet hastanelerinde ortodonti bölümleri bulunur; sıra süreleri ve yaş kriterleri değişkendir. Özel klinikte randevu esnekliği ve tedavi süreci farklı işler.'),
+            ),
+            7024 => array(
+                array('Şeffaf plak gerçekten görünmez mi?', 'Yakın mesafede fark edilebilir ancak sosyal mesafede neredeyse görünmezdir; bu yüzden özellikle yetişkinler tarafından tercih edilir.'),
+                array('Şeffaf plak günde kaç saat takılmalı?', 'Etkili bir tedavi için günde yaklaşık 20-22 saat takılması önerilir; yemek ve diş fırçalama sırasında çıkarılır.'),
+                array('Şeffaf plak tedavisi ne kadar sürer?', 'Vakanın zorluğuna göre değişmekle birlikte çoğunlukla 6-18 ay arasındadır.'),
+                array('Şeffaf plak diş telinden pahalı mıdır?', 'Üretim teknolojisi nedeniyle genellikle metal braketlere göre daha yüksek maliyetlidir. Size uygun seçenek muayenede belirlenir.'),
+                array('Her ortodontik sorun şeffaf plakla çözülür mü?', 'Hayır. Karmaşık iskeletsel vakalarda braket veya kombine tedavi gerekebilir; uygunluk muayenede değerlendirilir.'),
+                array('Şeffaf plak konuşmayı etkiler mi?', 'İlk günlerde kısa bir alışma süreci olabilir, ardından konuşma normale döner.'),
+            ),
+            4836 => array(
+                array('Bonding nedir?', 'Bonding, diş yüzeyine kompozit reçine uygulanarak dişin şekil, renk veya boşluk gibi estetik sorunlarının giderildiği bir uygulamadır.'),
+                array('Bonding ile dolgu arasındaki fark nedir?', 'Dolgu genellikle çürük tedavisi amacıyla yapılır; bonding ise estetik amaçlı diş şekillendirme ve renk düzeltme işlemidir.'),
+                array('Bonding kaç yıl dayanır?', 'Ağız bakımına ve beslenme alışkanlıklarına bağlı olarak genellikle birkaç yıl kullanılabilir; renklenme veya kırılma durumunda yenilenebilir.'),
+                array('Bonding işlemi rahat mıdır?', 'Çoğu vakada diş kesimi gerektirmediği için genellikle rahat bir işlemdir ve tek seansta tamamlanabilir.'),
+                array('Bonding hangi durumlarda uygulanır?', 'Diş arası boşluk, kırık veya çatlak diş, renk ve şekil bozuklukları ile kısa görünen dişlerde tercih edilebilir.'),
+                array('Bonding fiyatı neye göre değişir?', 'İşlem yapılan diş sayısı, vakanın kapsamı ve kullanılan malzemeye göre değişir; net fiyat muayenede belirlenir.'),
+            ),
+        );
+    }
+}
+add_filter('the_content', function ($content) {
+    if (!is_singular('post')) return $content;
+    $id = get_the_ID();
+    if (!in_array($id, array(7024, 4836), true)) return $content;
+    static $done = array();
+    if (isset($done[$id])) return $content;
+    $faqs = capa_faqs();
+    if (empty($faqs[$id])) return $content;
+    $done[$id] = true;
+    $html = '<section class="capa-faq"><h2>Sık Sorulan Sorular</h2>';
+    foreach ($faqs[$id] as $qa) {
+        $html .= '<h3>' . esc_html($qa[0]) . '</h3><p>' . esc_html($qa[1]) . '</p>';
+    }
+    $html .= '</section>';
+    return $content . $html;
+}, 12);
+add_action('wp_head', function () {
+    if (!is_singular('post')) return;
+    $id = get_the_ID();
+    $faqs = capa_faqs();
+    if (empty($faqs[$id])) return;
+    $items = array();
+    foreach ($faqs[$id] as $qa) {
+        $items[] = array('@type' => 'Question', 'name' => $qa[0], 'acceptedAnswer' => array('@type' => 'Answer', 'text' => $qa[1]));
+    }
+    $schema = array('@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $items);
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
+}, 99);
