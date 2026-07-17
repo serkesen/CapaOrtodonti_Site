@@ -174,3 +174,12 @@ add_action('wp_head', function () {
     $schema = array('@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $items);
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
 }, 99);
+
+// H1 hijyeni: protez (8886) + periodontoloji (8969) — blok kendi hero H1'ini
+// veriyor; Hello temasinin entry-title basligini kapat (cift H1'i kaldirir).
+add_filter('hello_elementor_page_title', function ($show) {
+    if (is_page(array(8886, 8969))) {
+        return false;
+    }
+    return $show;
+});
