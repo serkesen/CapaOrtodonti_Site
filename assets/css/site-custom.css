@@ -846,3 +846,7 @@ body.category .elementor-element-12e9993a strong{font-weight:400}
 
 /* Kategori arsiv kart etiketi: kucuk + sag ust koseye yakin */
 body.category .elementor-post__badge{font-size:10px !important;padding:4px 10px !important;margin:10px !important;letter-spacing:.4px}
+
+/* 8062 dis-teli: Single Post sablon baslik bandini (icon box dd847be) YALNIZ bu yazida gizle. Fable blok kendi hero'suna sahip; diger yazilar etkilenmez. */
+body.postid-8062 .elementor-element-dd847be{display:none !important;}
+
