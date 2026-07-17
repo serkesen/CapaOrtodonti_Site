@@ -76,3 +76,41 @@ add_action('wp_head', function () {
         echo '<style id="capa-post-hero">body.single-post .elementor-widget-icon-box > .elementor-widget-container{background-image:linear-gradient(120deg,rgba(23,86,170,.93),rgba(16,66,124,.86) 55%,rgba(12,52,99,.82)),url(' . $u . ') !important;background-size:cover !important;background-position:center !important}</style>';
     }
 }, 100);
+
+/* capa-dentist-schema: Dentist (LocalBusiness) JSON-LD - lokal SEO. Yalniz ana sayfada. GBP ile hizali NAP. */
+add_action('wp_head', function () {
+    if (!is_front_page()) return;
+    $schema = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'Dentist',
+        '@id' => 'https://capaortodonti.com/#dentist',
+        'name' => 'Özel Çapa Ortodonti Diş Polikliniği',
+        'alternateName' => 'Çapa Ortodonti',
+        'url' => 'https://capaortodonti.com/',
+        'logo' => 'https://capaortodonti.com/wp-content/uploads/logo-capa.svg',
+        'image' => 'https://capaortodonti.com/wp-content/uploads/ortodonti.jpg',
+        'telephone' => '+902125872424',
+        'email' => 'info@capaortodonti.com',
+        'address' => array(
+            '@type' => 'PostalAddress',
+            'streetAddress' => 'Şehremini Mh. Deniz Abdal Camii Sk. No: 23/A',
+            'postalCode' => '34104',
+            'addressLocality' => 'Fatih',
+            'addressRegion' => 'İstanbul',
+            'addressCountry' => 'TR',
+        ),
+        'hasMap' => 'https://maps.google.com/?cid=8021667602538020695',
+        'geo' => array('@type' => 'GeoCoordinates', 'latitude' => 41.0144148, 'longitude' => 28.9320824),
+        'openingHoursSpecification' => array(
+            array('@type' => 'OpeningHoursSpecification', 'dayOfWeek' => array('Monday','Tuesday','Wednesday','Thursday','Friday'), 'opens' => '09:30', 'closes' => '19:00'),
+            array('@type' => 'OpeningHoursSpecification', 'dayOfWeek' => 'Saturday', 'opens' => '09:30', 'closes' => '18:00'),
+        ),
+        'sameAs' => array(
+            'https://www.facebook.com/capaortodonti',
+            'https://www.instagram.com/capaortodonti/',
+            'https://twitter.com/capaortodonti',
+        ),
+    );
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "
+";
+}, 99);
