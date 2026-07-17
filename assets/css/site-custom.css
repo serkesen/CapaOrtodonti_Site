@@ -850,3 +850,9 @@ body.category .elementor-post__badge{font-size:10px !important;padding:4px 10px 
 /* 8062 dis-teli: Single Post sablon baslik bandini (icon box dd847be) YALNIZ bu yazida gizle. Fable blok kendi hero'suna sahip; diger yazilar etkilenmez. */
 body.postid-8062 .elementor-element-dd847be{display:none !important;}
 
+/* capa-8062-yerlesim: 8062 dis-teli Fable blok, YALNIZ bu yazi. Mevcut body.single-post kurallarini bu yazida override eder: icerik 1140 (footer genisligi), duplike otomatik CTA gizle, sablonun buyuk ust/alt boslugunu kis. */
+body.postid-8062 .elementor-element-7564cd68{display:none !important;}
+body.postid-8062 .elementor-element-17d2d652{width:100% !important;max-width:100% !important;flex-basis:100% !important;}
+body.postid-8062 .capa-post-cta{display:none !important;}
+body.postid-8062 .elementor-element-53602963{padding-top:24px !important;padding-bottom:48px !important;}
+
