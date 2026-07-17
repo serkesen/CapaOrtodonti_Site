@@ -868,3 +868,8 @@ body.postid-4836 .elementor-element-17d2d652{width:100% !important;max-width:100
 body.postid-4836 .capa-post-cta{display:none !important;}
 body.postid-4836 .elementor-element-53602963{padding-top:24px !important;padding-bottom:48px !important;}
 
+/* capa-lead-genislik: 3 Fable sayfada lead ve CTA metinleri sag bosluga kadar aksin (erken satir atlama duzeltme). */
+body.postid-8062 .dtf-sec-lead, body.postid-7024 .dtf-sec-lead, body.postid-4836 .dtf-sec-lead,
+body.postid-8062 .dtf-cta-p, body.postid-7024 .dtf-cta-p, body.postid-4836 .dtf-cta-p,
+body.postid-8062 .dtf-hero-lead, body.postid-7024 .dtf-hero-lead, body.postid-4836 .dtf-hero-lead{max-width:none !important;}
+
