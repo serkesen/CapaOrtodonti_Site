@@ -873,3 +873,12 @@ body.postid-8062 .dtf-sec-lead, body.postid-7024 .dtf-sec-lead, body.postid-4836
 body.postid-8062 .dtf-cta-p, body.postid-7024 .dtf-cta-p, body.postid-4836 .dtf-cta-p,
 body.postid-8062 .dtf-hero-lead, body.postid-7024 .dtf-hero-lead, body.postid-4836 .dtf-hero-lead{max-width:none !important;}
 
+
+
+/* === capa-faq-stil: tedavi sayfalarindaki otomatik SSS (capa-faq-system) — Fable gorunum (18 Tem 2026) === */
+.capa-faq{max-width:1140px;margin:8px auto 40px;padding:28px 22px 10px;background:#f5f8fc;border:1px solid #e7eef7;border-radius:18px}
+.capa-faq h2{color:#0f335f !important;font-size:26px;line-height:1.25;margin:0 0 18px;font-weight:800}
+.capa-faq h3{color:#124e91 !important;font-size:17px;line-height:1.4;margin:0;padding:14px 16px 4px;font-weight:700;background:#fff;border:1px solid #eef3f8;border-bottom:0;border-radius:12px 12px 0 0}
+.capa-faq h3::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#0f9b8e;margin-right:9px;vertical-align:2px}
+.capa-faq p{color:#43546e !important;font-size:15px;line-height:1.65;margin:0 0 14px;padding:0 16px 14px;background:#fff;border:1px solid #eef3f8;border-top:0;border-radius:0 0 12px 12px}
+@media (min-width:768px){.capa-faq{padding:34px 30px 16px}.capa-faq h2{font-size:30px}}
