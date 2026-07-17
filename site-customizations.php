@@ -143,13 +143,71 @@ if (!function_exists('capa_faqs')) {
                 array('Bonding hangi durumlarda uygulanır?', 'Diş arası boşluk, kırık veya çatlak diş, renk ve şekil bozuklukları ile kısa görünen dişlerde tercih edilebilir.'),
                 array('Bonding fiyatı neye göre değişir?', 'İşlem yapılan diş sayısı, vakanın kapsamı ve kullanılan malzemeye göre değişir; net fiyat muayenede belirlenir.'),
             ),
+            // --- Tedavi SAYFALARI (gece paketi, 18 Tem 2026) ---
+            4204 => array( // implant-tedavisi
+                array('İmplant tedavisi nedir?', 'İmplant, eksik dişlerin yerine çene kemiğine yerleştirilen titanyum vida üzerine protez diş uygulanmasıdır; komşu dişlere zarar vermeden kalıcı bir çözüm sunar.'),
+                array('İmplant tedavisi kaç seansta tamamlanır?', 'Genellikle implantın yerleştirilmesi tek seansta yapılır; kemikle kaynaşma süreci (osseointegrasyon) 2-4 ay sürer ve ardından kalıcı protez takılır.'),
+                array('İmplant sırasında ağrı olur mu?', 'İşlem lokal anestezi altında yapılır; çoğu hasta işlem sırasında ağrı hissetmez, sonrasındaki hafif hassasiyet hekimin önerdiği yöntemlerle kontrol edilir.'),
+                array('Kemik yetersizse implant yapılabilir mi?', 'Kemik hacmi yetersiz olduğunda greft (kemik tozu) veya sinüs yükseltme gibi ek işlemlerle implant çoğu vakada mümkün olur; uygunluk muayene ve görüntülemeyle belirlenir.'),
+                array('İmplant fiyatları neye göre belirlenir?', 'İmplant sayısı, kullanılan marka, kemik durumu ve ek işlem gereksinimine göre değişir; net planlama ücretsiz ilk değerlendirme sonrası yapılır.'),
+            ),
+            3607 => array( // ortodonti
+                array('Ortodonti tedavisi hangi yaşta başlamalı?', 'İlk ortodontik kontrol için ideal yaş 7 civarıdır; tedavi ihtiyacı ve zamanlaması hekim tarafından çocuğun gelişimine göre planlanır. Yetişkinlerde ise yaş sınırı yoktur.'),
+                array('Diş teli mi şeffaf plak mı daha iyi?', 'İkisi de etkilidir; seçim vakanın karmaşıklığına, yaşam tarzına ve estetik beklentiye göre yapılır. Muayenede her iki seçeneğin size uygunluğu değerlendirilir.'),
+                array('Ortodonti tedavisi ne kadar sürer?', 'Vakaya göre değişmekle birlikte çoğu tedavi 6-24 ay aralığında tamamlanır; düzenli kontrollere gelmek süreyi kısaltır.'),
+                array('Tedavi bittikten sonra dişler bozulur mu?', 'Tedavi sonrası pekiştirme (retainer) kullanımı önerilir; düzenli kullanıldığında dişlerin eski konumuna dönmesi büyük ölçüde engellenir.'),
+                array('Ortodonti tedavisi sırasında ağrı olur mu?', 'Tel takıldıktan veya aktivasyondan sonraki ilk günlerde hafif baskı hissi normaldir; kısa sürede geçer ve günlük yaşamı engellemez.'),
+            ),
+            4846 => array( // kanal-tedavisi-endodonti
+                array('Kanal tedavisi nedir, neden yapılır?', 'Dişin içindeki iltihaplı veya hasar görmüş sinir dokusunun temizlenip kanalların doldurulmasıdır; dişi çekilmekten kurtarmanın en etkili yoludur.'),
+                array('Kanal tedavisi ağrılı mıdır?', 'Lokal anestezi altında yapıldığı için işlem sırasında ağrı hissedilmez; tedavi genellikle var olan diş ağrısını ortadan kaldırır.'),
+                array('Kanal tedavisi kaç seans sürer?', 'Çoğu vaka tek seansta biter; iltihabın yoğun olduğu durumlarda 2-3 seans gerekebilir.'),
+                array('Kanal tedavili diş ne kadar dayanır?', 'Doğru restorasyon ve iyi ağız bakımıyla kanal tedavili dişler uzun yıllar sorunsuz kullanılabilir.'),
+                array('Kanal tedavisinden sonra nelere dikkat etmeliyim?', 'Kalıcı dolgu/kaplama tamamlanana kadar o bölgeyle sert gıda çiğnememek ve hekimin önerdiği kontrollere gelmek önemlidir.'),
+            ),
+            4857 => array( // gulus-tasarimi
+                array('Gülüş tasarımı nedir?', 'Diş rengi, şekli, diş eti seviyesi ve yüz hatları birlikte değerlendirilerek kişiye özel estetik ve fonksiyonel bir gülüş planlanmasıdır.'),
+                array('Gülüş tasarımında hangi işlemler uygulanır?', 'İhtiyaca göre beyazlatma, bonding, laminate/zirkonyum kaplama, diş eti düzenlemesi ve ortodontik düzeltmeler kombinlenebilir.'),
+                array('Gülüş tasarımı kaç seans sürer?', 'Kapsama göre değişir; yalnız beyazlatma ve bonding içeren planlar birkaç seansta, kaplama içeren kapsamlı planlar birkaç haftada tamamlanabilir.'),
+                array('Sonuç doğal görünür mü?', 'Amaç yüz hatlarınıza uyumlu, doğal bir görünümdür; tasarım aşamasında dijital önizleme ve prova ile birlikte karar verilir.'),
+                array('Gülüş tasarımı fiyatı neye göre belirlenir?', 'Uygulanacak işlemlerin türü ve diş sayısına göre değişir; net plan ve bilgilendirme ücretsiz ilk muayenede yapılır.'),
+            ),
+            5635 => array( // cocuk-dis-hekimligi-pedodonti-istanbul
+                array('Çocuğumu ilk kez ne zaman diş hekimine getirmeliyim?', 'İlk diş sürdükten sonra, en geç 1 yaş civarında ilk kontrol önerilir; erken tanışma çocuğun diş hekimi korkusu geliştirmesini önler.'),
+                array('Süt dişleri nasılsa dökülecek, tedavi gerekli mi?', 'Gereklidir; süt dişlerindeki çürükler ağrıya, iltihaba ve kalıcı dişlerin yer/dizilim sorunlarına yol açabilir.'),
+                array('Fissür örtücü ve flor uygulaması nedir?', 'Fissür örtücü azı dişlerinin girintilerini kapatarak, flor ise mineyi güçlendirerek çürüğü önleyen koruyucu uygulamalardır; ağrısızdır ve dakikalar içinde biter.'),
+                array('Çocuğum diş hekiminden korkuyor, ne yapmalıyım?', 'Pedodonti yaklaşımımız çocuğun güvenini kazanmaya dayanır; kısa tanışma seansları ve oyunlaştırılmış anlatımla çoğu çocuk tedaviyi rahat tamamlar.'),
+                array('Çocuklarda ortodontik kontrol ne zaman yapılmalı?', '7 yaş civarında ilk ortodontik değerlendirme önerilir; erken tespit edilen sorunlar daha basit yöntemlerle çözülebilir.'),
+            ),
+            4209 => array( // dis-beyazlatma-yontemleri
+                array('Diş beyazlatma dişlere zarar verir mi?', 'Hekim kontrolünde uygulanan beyazlatma güvenlidir; mineye kalıcı zarar vermez. Geçici hassasiyet olabilir ve kısa sürede geçer.'),
+                array('Beyazlatma etkisi ne kadar kalıcıdır?', 'Beslenme ve bakım alışkanlıklarına göre ortalama 6 ay-2 yıl sürer; kahve, çay ve sigara süreyi kısaltır.'),
+                array('Ofis tipi ve ev tipi beyazlatma farkı nedir?', 'Ofis tipi klinikte tek seansta yapılır; ev tipinde kişiye özel plakla evde birkaç hafta uygulanır. İhtiyaca göre ikisi kombinlenebilir.'),
+                array('Herkese beyazlatma yapılabilir mi?', 'Çürük ve diş eti sorunları önce tedavi edilmelidir; kaplama ve dolgular beyazlamaz. Uygunluk muayenede değerlendirilir.'),
+                array('Beyazlatma sonrası nelere dikkat etmeliyim?', 'İlk 48 saat renkli içecek ve gıdalardan kaçınmak, düzenli fırçalama ve hekim kontrolleri sonucun kalıcılığını artırır.'),
+            ),
+            8886 => array( // protez-tedavisi
+                array('Hangi protez türleri uygulanıyor?', 'Sabit protezler (kuron-köprü, implant üstü) ile hareketli protezler (total, bölümlü, hassas tutuculu) kliniğimizde uygulanmaktadır.'),
+                array('İmplant üstü protez ile klasik protez farkı nedir?', 'İmplant üstü protezler çene kemiğine sabitlenen implantlardan destek alır; tutuculuğu ve çiğneme konforu klasik hareketli protezlere göre daha yüksektir.'),
+                array('Protez yapımı kaç seans sürer?', 'Ölçü, prova ve teslim aşamalarıyla genellikle birkaç seansta tamamlanır; implant üstü protezlerde implant iyileşme süresi eklenir.'),
+                array('Proteze alışmak ne kadar sürer?', 'İlk günlerde konuşma ve çiğnemede yadırgama normaldir; çoğu hasta birkaç hafta içinde tam uyum sağlar.'),
+                array('Protez bakımı nasıl yapılır?', 'Hareketli protezler her gün özel fırça ile temizlenmeli, gece çıkarılmalı; sabit protezlerde diş ipi ve arayüz fırçası kullanımı önemlidir.'),
+            ),
+            8969 => array( // periodontoloji-dis-eti-tedavisi
+                array('Diş eti kanaması neden olur?', 'En sık nedeni plak birikimine bağlı diş eti iltihabıdır (gingivitis); erken dönemde profesyonel temizlik ve doğru fırçalama ile geri döndürülebilir.'),
+                array('Periodontitis nedir, neden önemlidir?', 'Tedavi edilmeyen diş eti iltihabının kemiğe ilerlemiş halidir; diş kaybının önde gelen nedenlerindendir ve erken tedaviyle durdurulabilir.'),
+                array('Diş taşı temizliği dişlere zarar verir mi?', 'Vermez; diş taşları mineye değil üzerine yapışmıştır. Düzenli temizlik diş eti sağlığını korur, önerilen aralık genellikle 6 aydır.'),
+                array('Diş eti çekilmesi tedavi edilebilir mi?', 'İlerlemesi durdurulabilir; uygun vakalarda diş eti operasyonlarıyla çekilen bölgeler kapatılabilir. Değerlendirme muayenede yapılır.'),
+                array('Pembe estetik nedir?', 'Gülüşte diş etlerinin seviye, renk ve simetrisinin düzenlenmesidir; gülüş tasarımının önemli bir parçasıdır.'),
+            ),
         );
     }
 }
 add_filter('the_content', function ($content) {
-    if (!is_singular('post')) return $content;
+    if (!is_singular(array('post', 'page'))) return $content;
     $id = get_the_ID();
-    if (!in_array($id, array(), true)) return $content;
+    $only = array(4204, 3607, 4846, 4857, 5635, 4209, 8886, 8969); // gorunur SSS yalniz tedavi sayfalarinda (postlarda SSS bloklarin icinde)
+    if (!in_array($id, $only, true)) return $content;
     static $done = array();
     if (isset($done[$id])) return $content;
     $faqs = capa_faqs();
@@ -163,7 +221,7 @@ add_filter('the_content', function ($content) {
     return $content . $html;
 }, 12);
 add_action('wp_head', function () {
-    if (!is_singular('post')) return;
+    if (!is_singular(array('post', 'page'))) return;
     $id = get_the_ID();
     $faqs = capa_faqs();
     if (empty($faqs[$id])) return;
