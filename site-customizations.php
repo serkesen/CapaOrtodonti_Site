@@ -241,3 +241,18 @@ add_filter('hello_elementor_page_title', function ($show) {
     }
     return $show;
 });
+
+
+/* capa-randevu-meta: 8830 online-randevu meta (edit ekrani fatal oldugu icin Yoast filtresiyle) — 18 Tem 2026 */
+add_filter('wpseo_metadesc', function ($desc) {
+    if (is_page(8830)) {
+        return 'Çapa Ortodonti Fatih\'te online randevu: hekiminizi seçin, size uygun gün ve saati ayırtın. Ortodonti, implant, çocuk diş hekimliği ve tüm tedaviler için hızlı randevu.';
+    }
+    return $desc;
+});
+add_filter('wpseo_title', function ($title) {
+    if (is_page(8830)) {
+        return 'Online Randevu Al | Çapa Ortodonti Diş Kliniği — Fatih, İstanbul';
+    }
+    return $title;
+});
