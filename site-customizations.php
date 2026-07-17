@@ -149,7 +149,7 @@ if (!function_exists('capa_faqs')) {
 add_filter('the_content', function ($content) {
     if (!is_singular('post')) return $content;
     $id = get_the_ID();
-    if (!in_array($id, array(7024, 4836), true)) return $content;
+    if (!in_array($id, array(), true)) return $content;
     static $done = array();
     if (isset($done[$id])) return $content;
     $faqs = capa_faqs();

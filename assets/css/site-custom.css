@@ -856,3 +856,15 @@ body.postid-8062 .elementor-element-17d2d652{width:100% !important;max-width:100
 body.postid-8062 .capa-post-cta{display:none !important;}
 body.postid-8062 .elementor-element-53602963{padding-top:24px !important;padding-bottom:48px !important;}
 
+/* capa-7024-yerlesim + capa-4836-yerlesim: 8062 ile bire bir (mavi band gizle + icerik 1140 + ust/alt bosluk + duplike otomatik CTA gizle). */
+body.postid-7024 .elementor-element-dd847be{display:none !important;}
+body.postid-7024 .elementor-element-7564cd68{display:none !important;}
+body.postid-7024 .elementor-element-17d2d652{width:100% !important;max-width:100% !important;flex-basis:100% !important;}
+body.postid-7024 .capa-post-cta{display:none !important;}
+body.postid-7024 .elementor-element-53602963{padding-top:24px !important;padding-bottom:48px !important;}
+body.postid-4836 .elementor-element-dd847be{display:none !important;}
+body.postid-4836 .elementor-element-7564cd68{display:none !important;}
+body.postid-4836 .elementor-element-17d2d652{width:100% !important;max-width:100% !important;flex-basis:100% !important;}
+body.postid-4836 .capa-post-cta{display:none !important;}
+body.postid-4836 .elementor-element-53602963{padding-top:24px !important;padding-bottom:48px !important;}
+
