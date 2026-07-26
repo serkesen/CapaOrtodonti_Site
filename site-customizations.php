@@ -256,3 +256,99 @@ add_filter('wpseo_title', function ($title) {
     }
     return $title;
 });
+
+
+/* ============================================================================
+ * capa-randevu-ozet — DentSoft randevu ÖZETİ (26 Tem 2026)
+ *
+ * GET /wp-json/capa/v1/randevu-ozet?from=YYYY-MM-DD&to=YYYY-MM-DD
+ *
+ * ⚠ KVKK: wp_dentsoft_appointments tablosu ad/soyad/telefon/e-posta/dogum
+ * tarihi iceriyor. Bu endpoint SATIR DUZEYINDE HICBIR SEY DONDURMEZ —
+ * yalnizca (tarih x durum x hekim) kirilimli SAYIM ve ortalama gun farki.
+ * Kisisel veri dashboard'a / Supabase'e ASLA gitmez.
+ *
+ * Yetki: X-Capa-Key header'i wp-config.php'deki CAPA_RANDEVU_KEY sabitine
+ * esit olmali. ⚠ ANAHTAR BU PUBLIC REPODA TUTULMAZ — wp-config.php'ye
+ * define('CAPA_RANDEVU_KEY', '...'); satiriyla eklenir.
+ * Sabit tanimli degilse endpoint kapalidir (403).
+ *
+ * 'date' = TALEP tarihi (created_at) — GA4 randevu_tamamlandi event'iyle
+ * karsilastirilabilmesi icin. lead_days = talep ile randevu gunu arasi
+ * ortalama gun farki.
+ * ========================================================================== */
+add_action('rest_api_init', function () {
+    register_rest_route('capa/v1', '/randevu-ozet', array(
+        'methods'             => 'GET',
+        'callback'            => 'capa_randevu_ozet',
+        'permission_callback' => 'capa_randevu_ozet_yetki',
+    ));
+});
+
+function capa_randevu_ozet_yetki(WP_REST_Request $req) {
+    if (!defined('CAPA_RANDEVU_KEY')) return false;
+    $key = (string) CAPA_RANDEVU_KEY;
+    if ($key === '') return false;
+    $sent = (string) $req->get_header('x_capa_key');
+    if ($sent === '') return false;
+    return hash_equals($key, $sent);
+}
+
+function capa_randevu_gun($v, $fallback) {
+    $v = is_string($v) ? trim($v) : '';
+    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $v)) return $fallback;
+    return $v;
+}
+
+function capa_randevu_ozet(WP_REST_Request $req) {
+    global $wpdb;
+
+    nocache_headers();
+
+    $table = $wpdb->prefix . 'dentsoft_appointments';
+    $found = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table));
+    if ($found !== $table) {
+        return new WP_REST_Response(array(
+            'ok' => false, 'note' => 'dentsoft tablosu bulunamadi', 'rows' => array(),
+        ), 200);
+    }
+
+    $to   = capa_randevu_gun($req->get_param('to'),   gmdate('Y-m-d'));
+    $from = capa_randevu_gun($req->get_param('from'), gmdate('Y-m-d', strtotime($to . ' -120 days')));
+    if ($from > $to) { $t = $from; $from = $to; $to = $t; }
+    // en fazla ~2 yil: agir sorguyu engelle
+    $min = gmdate('Y-m-d', strtotime($to . ' -730 days'));
+    if ($from < $min) $from = $min;
+
+    $sql = "SELECT DATE(created_at) AS d,
+                   COALESCE(NULLIF(appointment_status, ''), 'pending') AS st,
+                   COALESCE(NULLIF(doctor_name, ''), '(yok)') AS dr,
+                   COUNT(*) AS c,
+                   AVG(DATEDIFF(appointment_date, created_at)) AS lead_days
+            FROM {$table}
+            WHERE created_at >= %s AND created_at < DATE_ADD(%s, INTERVAL 1 DAY)
+            GROUP BY d, st, dr
+            ORDER BY d ASC";
+
+    $res = $wpdb->get_results($wpdb->prepare($sql, $from, $to), ARRAY_A);
+
+    $rows = array();
+    if (is_array($res)) {
+        foreach ($res as $r) {
+            $rows[] = array(
+                'date'      => $r['d'],
+                'status'    => $r['st'],
+                'doctor'    => $r['dr'],
+                'count'     => (int) $r['c'],
+                'lead_days' => ($r['lead_days'] === null) ? null : round((float) $r['lead_days'], 1),
+            );
+        }
+    }
+
+    return new WP_REST_Response(array(
+        'ok'   => true,
+        'from' => $from,
+        'to'   => $to,
+        'rows' => $rows,
+    ), 200);
+}
