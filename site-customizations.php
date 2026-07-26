@@ -325,10 +325,11 @@ function capa_randevu_ozet(WP_REST_Request $req) {
         }
         if ($pick === null && !empty($cands)) { $pick = $cands[0]; }
         if ($pick === null) {
-            return new WP_REST_Response(array(
-                'ok' => false, 'note' => 'randevu tablosu bulunamadi',
-                'adaylar' => $cands, 'rows' => array(),
-            ), 200);
+            // DentSoft tablosu YOK — bu normal: randevular KVKK geregi lokale
+            // kaydedilmiyor, dogrudan DentSoft'a akiyor. Bu durumda anonim
+            // sayac tablosundan don (durum = 'talep'; onay/iptal DentSoft'ta
+            // kaldigi icin buradan GORUNMEZ).
+            return capa_randevu_ozet_sayactan($req);
         }
         $table = $pick;
     }
@@ -386,5 +387,161 @@ function capa_randevu_ozet(WP_REST_Request $req) {
         'from'  => $from,
         'to'    => $to,
         'rows'  => $rows,
+    ), 200);
+}
+
+
+/* ============================================================================
+ * capa-randevu-sayac — ANONIM randevu sayaci (26 Tem 2026)
+ *
+ * POST /wp-json/capa/v1/randevu-say   govde: {tip, hekim, gun_farki}
+ *
+ * NEDEN: Randevu bilgileri KVKK geregi lokale KAYDEDILMIYOR, dogrudan
+ * DentSoft'a akiyor. Dolayisiyla okunacak bir randevu tablosu YOK. Elimizdeki
+ * tek sayi GA4 event'i; o da reklam engelleyici / cerez reddi yuzunden eksik
+ * sayiyor ve ne kadar eksik saydigini bilmiyoruz. Bu uc, birinci-parti (kendi
+ * alan adimiz) oldugu icin engellenmez ve gercege daha yakin bir sayi verir.
+ *
+ * ⚠ KVKK TASARIMI:
+ *  - Tasinan tek veri: randevu tipi, HEKIM adi (klinik personeli), randevu
+ *    gununun kac gun sonrasi oldugu. Ad/soyad/telefon/e-posta/dogum tarihi/
+ *    PNR/hasta no HICBIRI gonderilmez, kabul edilmez.
+ *  - Randevu basina SATIR OLUSMAZ. Yalnizca (gun, tip, hekim) sayaci artar.
+ *    Tek tek kayit tutulmadigi icin geri kimliklendirme yapisal olarak
+ *    imkansizdir — politika degil, sema geregi.
+ *
+ * Kotuye kullanim: nonce KULLANILMIYOR — sayfa LiteSpeed ile cachelendigi icin
+ * gomulu nonce bayatlayip pingi sessizce dusurur, bu da olcumu bozar. Yerine
+ * ayni-kaynak kontrolu + IP basina saatlik limit var.
+ * ========================================================================== */
+function capa_sayac_tablo() {
+    global $wpdb;
+    return $wpdb->prefix . 'capa_randevu_sayac';
+}
+
+function capa_sayac_tablo_kur() {
+    global $wpdb;
+    $t = capa_sayac_tablo();
+    $var = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $t));
+    if ($var === $t) return true;
+    $collate = $wpdb->get_charset_collate();
+    $sql = "CREATE TABLE IF NOT EXISTS {$t} (
+        gun date NOT NULL,
+        tip varchar(20) NOT NULL DEFAULT 'dentsoft',
+        hekim varchar(160) NOT NULL DEFAULT '(yok)',
+        adet int NOT NULL DEFAULT 0,
+        fark_top int NOT NULL DEFAULT 0,
+        fark_n int NOT NULL DEFAULT 0,
+        PRIMARY KEY (gun, tip, hekim)
+    ) {$collate};";
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+    return true;
+}
+
+function capa_sayac_ayni_kaynak() {
+    $host = wp_parse_url(home_url(), PHP_URL_HOST);
+    foreach (array('HTTP_ORIGIN', 'HTTP_REFERER') as $k) {
+        if (empty($_SERVER[$k])) continue;
+        $h = wp_parse_url(esc_url_raw(wp_unslash($_SERVER[$k])), PHP_URL_HOST);
+        if ($h && $host && strcasecmp($h, $host) === 0) return true;
+    }
+    return false;
+}
+
+add_action('rest_api_init', function () {
+    register_rest_route('capa/v1', '/randevu-say', array(
+        'methods'             => 'POST',
+        'callback'            => 'capa_randevu_say',
+        'permission_callback' => '__return_true',
+    ));
+});
+
+function capa_randevu_say(WP_REST_Request $req) {
+    global $wpdb;
+    nocache_headers();
+
+    if (!capa_sayac_ayni_kaynak()) {
+        return new WP_REST_Response(array('ok' => false, 'note' => 'kaynak'), 403);
+    }
+
+    // IP basina saatlik limit (IP saklanmaz, yalnizca hash'i gecici anahtar olur)
+    $ip  = isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) : '0';
+    $key = 'capa_say_' . md5($ip . '|' . gmdate('YmdH'));
+    $n   = (int) get_transient($key);
+    if ($n >= 12) {
+        return new WP_REST_Response(array('ok' => false, 'note' => 'limit'), 429);
+    }
+    set_transient($key, $n + 1, HOUR_IN_SECONDS);
+
+    $tip = sanitize_text_field((string) $req->get_param('tip'));
+    if (!in_array($tip, array('dentsoft', 'genel'), true)) $tip = 'dentsoft';
+
+    $hekim = trim(sanitize_text_field((string) $req->get_param('hekim')));
+    if ($hekim === '') $hekim = '(yok)';
+    if (mb_strlen($hekim) > 120) $hekim = mb_substr($hekim, 0, 120);
+
+    $fark = $req->get_param('gun_farki');
+    $fark = is_numeric($fark) ? (int) $fark : null;
+    if ($fark !== null && ($fark < 0 || $fark > 730)) $fark = null;
+
+    capa_sayac_tablo_kur();
+    $t   = capa_sayac_tablo();
+    $gun = current_time('Y-m-d');
+
+    $wpdb->query($wpdb->prepare(
+        "INSERT INTO {$t} (gun, tip, hekim, adet, fark_top, fark_n)
+         VALUES (%s, %s, %s, 1, %d, %d)
+         ON DUPLICATE KEY UPDATE
+           adet = adet + 1,
+           fark_top = fark_top + VALUES(fark_top),
+           fark_n = fark_n + VALUES(fark_n)",
+        $gun, $tip, $hekim,
+        ($fark === null ? 0 : $fark),
+        ($fark === null ? 0 : 1)
+    ));
+
+    return new WP_REST_Response(array('ok' => true), 200);
+}
+
+/* randevu-ozet fallback: DentSoft tablosu yokken anonim sayactan ozet uret. */
+function capa_randevu_ozet_sayactan(WP_REST_Request $req) {
+    global $wpdb;
+    $t = capa_sayac_tablo();
+    $var = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $t));
+    if ($var !== $t) {
+        return new WP_REST_Response(array(
+            'ok' => true, 'kaynak' => 'sayac', 'tablo' => null,
+            'note' => 'sayac tablosu henuz olusmadi (ilk randevuda olusur)',
+            'rows' => array(),
+        ), 200);
+    }
+
+    $to   = capa_randevu_gun($req->get_param('to'),   gmdate('Y-m-d'));
+    $from = capa_randevu_gun($req->get_param('from'), gmdate('Y-m-d', strtotime($to . ' -120 days')));
+    if ($from > $to) { $x = $from; $from = $to; $to = $x; }
+
+    $res = $wpdb->get_results($wpdb->prepare(
+        "SELECT gun, tip, hekim, adet, fark_top, fark_n
+         FROM {$t} WHERE gun >= %s AND gun <= %s ORDER BY gun ASC", $from, $to), ARRAY_A);
+
+    $rows = array();
+    if (is_array($res)) {
+        foreach ($res as $r) {
+            $n = (int) $r['fark_n'];
+            $rows[] = array(
+                'date'      => $r['gun'],
+                'status'    => 'talep',
+                'doctor'    => $r['hekim'],
+                'count'     => (int) $r['adet'],
+                'lead_days' => $n > 0 ? round(((int) $r['fark_top']) / $n, 1) : null,
+                'tip'       => $r['tip'],
+            );
+        }
+    }
+
+    return new WP_REST_Response(array(
+        'ok' => true, 'kaynak' => 'sayac', 'tablo' => $t,
+        'from' => $from, 'to' => $to, 'rows' => $rows,
     ), 200);
 }
