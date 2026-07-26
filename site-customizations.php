@@ -305,13 +305,48 @@ function capa_randevu_ozet(WP_REST_Request $req) {
 
     nocache_headers();
 
+    // Tabloyu bul. Beklenen ad yoksa otomatik kesfet — eklenti surumune gore
+    // tablo adi degisebiliyor (26 Tem canli test: beklenen ad yoktu).
     $table = $wpdb->prefix . 'dentsoft_appointments';
     $found = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table));
     if ($found !== $table) {
+        $cands = array();
+        foreach (array('dentsoft', 'appointment', 'randevu') as $needle) {
+            $like = '%' . $wpdb->esc_like($needle) . '%';
+            $hit = $wpdb->get_col($wpdb->prepare(
+                "SELECT TABLE_NAME FROM information_schema.tables
+                 WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME LIKE %s", $like));
+            if (is_array($hit)) { $cands = array_merge($cands, $hit); }
+        }
+        $cands = array_values(array_unique($cands));
+        $pick = null;
+        foreach ($cands as $c) {
+            if (stripos($c, 'appointment') !== false) { $pick = $c; break; }
+        }
+        if ($pick === null && !empty($cands)) { $pick = $cands[0]; }
+        if ($pick === null) {
+            return new WP_REST_Response(array(
+                'ok' => false, 'note' => 'randevu tablosu bulunamadi',
+                'adaylar' => $cands, 'rows' => array(),
+            ), 200);
+        }
+        $table = $pick;
+    }
+    $table = str_replace('`', '', $table);
+
+    // Kolon kontrolu: beklenen kolonlar yoksa sorgu patlamasin, kolon listesini don.
+    $cols = $wpdb->get_col("SHOW COLUMNS FROM `{$table}`");
+    $cols = is_array($cols) ? $cols : array();
+    $eksik = array_values(array_diff(
+        array('created_at', 'appointment_status', 'appointment_date'), $cols));
+    if (!empty($eksik)) {
         return new WP_REST_Response(array(
-            'ok' => false, 'note' => 'dentsoft tablosu bulunamadi', 'rows' => array(),
+            'ok' => false, 'note' => 'kolon eslesmedi', 'tablo' => $table,
+            'eksik' => $eksik, 'kolonlar' => $cols, 'rows' => array(),
         ), 200);
     }
+    $dr = in_array('doctor_name', $cols, true)
+        ? "COALESCE(NULLIF(doctor_name, ''), '(yok)')" : "'(yok)'";
 
     $to   = capa_randevu_gun($req->get_param('to'),   gmdate('Y-m-d'));
     $from = capa_randevu_gun($req->get_param('from'), gmdate('Y-m-d', strtotime($to . ' -120 days')));
@@ -322,7 +357,7 @@ function capa_randevu_ozet(WP_REST_Request $req) {
 
     $sql = "SELECT DATE(created_at) AS d,
                    COALESCE(NULLIF(appointment_status, ''), 'pending') AS st,
-                   COALESCE(NULLIF(doctor_name, ''), '(yok)') AS dr,
+                   {$dr} AS dr,
                    COUNT(*) AS c,
                    AVG(DATEDIFF(appointment_date, created_at)) AS lead_days
             FROM {$table}
@@ -346,9 +381,10 @@ function capa_randevu_ozet(WP_REST_Request $req) {
     }
 
     return new WP_REST_Response(array(
-        'ok'   => true,
-        'from' => $from,
-        'to'   => $to,
-        'rows' => $rows,
+        'ok'    => true,
+        'tablo' => $table,
+        'from'  => $from,
+        'to'    => $to,
+        'rows'  => $rows,
     ), 200);
 }
