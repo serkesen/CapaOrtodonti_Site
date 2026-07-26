@@ -318,7 +318,11 @@ function capa_randevu_ozet(WP_REST_Request $req) {
                  WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME LIKE %s", $like));
             if (is_array($hit)) { $cands = array_merge($cands, $hit); }
         }
-        $cands = array_values(array_unique($cands));
+        // ⚠ Kendi sayac tablomuzu ADAY SAYMA: adinda 'randevu' gectigi icin
+        // kesif onu yakalayip 'kolon eslesmedi' ile duvara toslar (26 Tem hatasi).
+        $kendi = capa_sayac_tablo();
+        $cands = array_values(array_filter(array_unique($cands),
+            function ($c) use ($kendi) { return strcasecmp($c, $kendi) !== 0; }));
         $pick = null;
         foreach ($cands as $c) {
             if (stripos($c, 'appointment') !== false) { $pick = $c; break; }
@@ -341,10 +345,8 @@ function capa_randevu_ozet(WP_REST_Request $req) {
     $eksik = array_values(array_diff(
         array('created_at', 'appointment_status', 'appointment_date'), $cols));
     if (!empty($eksik)) {
-        return new WP_REST_Response(array(
-            'ok' => false, 'note' => 'kolon eslesmedi', 'tablo' => $table,
-            'eksik' => $eksik, 'kolonlar' => $cols, 'rows' => array(),
-        ), 200);
+        // Bulunan tablo beklenen semada degil → hata dondurme, anonim sayaca dus.
+        return capa_randevu_ozet_sayactan($req);
     }
     $dr = in_array('doctor_name', $cols, true)
         ? "COALESCE(NULLIF(doctor_name, ''), '(yok)')" : "'(yok)'";
