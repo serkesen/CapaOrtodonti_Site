@@ -595,7 +595,22 @@ add_filter('the_content', function ($content) {
     $hedef = array_map('intval', explode(',', CAPA_AI_TANITIM));
     if (!in_array((int) get_the_ID(), $hedef, true)) return $content;
     if (strpos($content, 'capa-ai-tanitim') !== false) return $content;
-    return $content . capa_blok_oku('yapay-zeka-tanitim');
+    $blok = capa_blok_oku('yapay-zeka-tanitim');
+    if ($blok === '') return $content;
+
+    /* 28 Tem: /ortodonti/ (3607) sayfasinda bant en altta degil, mavi hero seridinin
+       hemen altinda dursun. Hero bir HTML widget'i: <section class="ort-hero">...</section>
+       ve hemen ardindan ilk <section class="ort-section"> geliyor. Bant o noktaya girer.
+       ⚠ Elementor cikti yapisi degisirse desen tutmaz -> o durumda eski davranisa
+       (sonuna ekleme) sessizce duser, sayfa bozulmaz. */
+    if ((int) get_the_ID() === 3607) {
+        $imza = '<section class="ort-section"';
+        $k = strpos($content, $imza);
+        if ($k !== false) {
+            return substr($content, 0, $k) . $blok . substr($content, $k);
+        }
+    }
+    return $content . $blok;
 }, 999);
 
 /* FAQPage schema KALDIRILDI (28 Tem): sayfadan gorunur SSS bolumu cikarildi,
