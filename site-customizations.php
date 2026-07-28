@@ -618,3 +618,26 @@ add_filter('hello_elementor_page_title', function ($show) {
     if (capa_ai_sayfa_mi()) return false;
     return $show;
 }, 11);
+
+
+/* ============================================================================
+   capa-eski-url: kalici 301 yonlendirmeler — 28 Tem 2026
+   Neden: /iletisim/ once yazim hatasiyla /iletisimm/ slug'inda duruyordu.
+   Slug duzeltildi; eski URL'in 404 vermemesi icin acik 301 sart.
+   ⚠ WP'nin "tahmin" mekanizmasina (redirect_guess_404_permalink) GUVENME:
+   yalnizca ONEK eslesmesi yapar, bu yuzden iletisimm -> iletisim calismaz.
+   ============================================================================ */
+if (!function_exists('capa_eski_url_yonlendir')) {
+    function capa_eski_url_yonlendir() {
+        if (is_admin() || !is_404()) return;
+        $harita = array(
+            'iletisimm' => '/iletisim/',
+        );
+        $yol = trim(parse_url(add_query_arg(array()), PHP_URL_PATH), '/');
+        if (isset($harita[$yol])) {
+            wp_redirect(home_url($harita[$yol]), 301);
+            exit;
+        }
+    }
+}
+add_action('template_redirect', 'capa_eski_url_yonlendir', 1);
