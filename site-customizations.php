@@ -547,3 +547,95 @@ function capa_randevu_ozet_sayactan(WP_REST_Request $req) {
         'from' => $from, 'to' => $to, 'rows' => $rows,
     ), 200);
 }
+
+/* ============================================================
+   capa-ai-sayfasi — Yapay zeka kanit sayfasi (27 Tem 2026)
+   Sayfa: 9185 /yapay-zeka-ortodonti-onerisi/
+   Icerik bloklari REPODA: assets/blocks/*.html — surum kontrollu,
+   WP editorunde tutulmuyor (capa-faq-system ile ayni desen).
+   Kapsam: sayfa blogu + tanitim blogu (3607/7024) + SSS + FAQPage
+           schema + Yoast meta + cift H1 onlemi.
+   ============================================================ */
+if (!defined('CAPA_AI_PAGE'))    define('CAPA_AI_PAGE', 9185);
+if (!defined('CAPA_AI_TANITIM')) define('CAPA_AI_TANITIM', '3607,7024'); // ortodonti sayfasi + seffaf plak postu
+
+if (!function_exists('capa_blok_oku')) {
+    function capa_blok_oku($ad) {
+        $p = plugin_dir_path(__FILE__) . 'assets/blocks/' . $ad . '.html';
+        if (!is_readable($p)) return '';
+        $h = file_get_contents($p);
+        return $h === false ? '' : $h;
+    }
+}
+if (!function_exists('capa_ai_sayfa_mi')) {
+    function capa_ai_sayfa_mi() {
+        return is_page(CAPA_AI_PAGE) || is_page('yapay-zeka-ortodonti-onerisi');
+    }
+}
+if (!function_exists('capa_ai_faqs')) {
+    function capa_ai_faqs() {
+        return array(
+            array('Yapay zekâ asistanları klinikleri neye göre öneriyor?', 'Yapay zekâ asistanları herkese açık kaynaklardan derleme yapar: işletme profilleri, hasta değerlendirmeleri, randevu platformları ve kliniklerin kendi web siteleri. Bir kliniği kendiliğinden öne çıkarmaz; bu kaynaklardaki bilgiyi özetler.'),
+            array('Bu sonuçlar kişiye göre değişir mi?', 'Evet. Yapay zekâ yanıtları kullanıcının konumuna, geçmiş aramalarına ve modelin güncellenmesine göre değişebilir. Bu sayfadaki yanıtlar oturum açılmadan, kişiselleştirme olmadan alınmıştır.'),
+            array('Aynı soruyu ben sorsam aynı sonucu alır mıyım?', 'Büyük ölçüde benzer bir yanıt almanız beklenir, ancak birebir aynı olmayabilir. Sayfada kullandığımız soruyu olduğu gibi paylaşıyoruz; dilediğiniz zaman kendiniz deneyebilirsiniz.'),
+            array('Yapay zekânın önerisi bir tedavi tavsiyesi midir?', 'Hayır. Yapay zekâ yanıtları yalnızca bilgilendirme amaçlıdır ve klinik muayenenin yerini tutmaz. Diş teli mi şeffaf plak mı sorusunun cevabı, ağız içi muayene ve röntgen değerlendirmesiyle netleşir.'),
+            array('Ortodonti tedavisi için nasıl randevu alabilirim?', 'Online randevu sayfamızdan hekiminizi, gün ve saatinizi seçerek randevu talebi oluşturabilir ya da (0212) 587 24 24 numaralı telefondan kliniğimize ulaşabilirsiniz.'),
+        );
+    }
+}
+
+/* 1) Sayfa blogu + SSS  2) tedavi sayfalarina tanitim blogu */
+add_filter('the_content', function ($content) {
+    if (!is_singular(array('post', 'page'))) return $content;
+    $id = get_the_ID();
+
+    if (capa_ai_sayfa_mi()) {
+        static $done = false;
+        if ($done) return $content;
+        $done = true;
+        $html = capa_blok_oku('yapay-zeka-sayfasi');
+        $sss  = '<section class="capa-faq"><h2>Sık Sorulan Sorular</h2>';
+        foreach (capa_ai_faqs() as $qa) {
+            $sss .= '<h3>' . esc_html($qa[0]) . '</h3><p>' . esc_html($qa[1]) . '</p>';
+        }
+        $sss .= '</section>';
+        return $html . $content . $sss;
+    }
+
+    $hedef = array_map('intval', explode(',', CAPA_AI_TANITIM));
+    if (in_array((int) $id, $hedef, true)) {
+        static $t = array();
+        if (isset($t[$id])) return $content;
+        $t[$id] = true;
+        return $content . capa_blok_oku('yapay-zeka-tanitim');
+    }
+    return $content;
+}, 13);
+
+add_action('wp_head', function () {
+    if (!capa_ai_sayfa_mi()) return;
+    $items = array();
+    foreach (capa_ai_faqs() as $qa) {
+        $items[] = array('@type' => 'Question', 'name' => $qa[0], 'acceptedAnswer' => array('@type' => 'Answer', 'text' => $qa[1]));
+    }
+    $schema = array('@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $items);
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
+}, 99);
+
+add_filter('wpseo_metadesc', function ($desc) {
+    if (capa_ai_sayfa_mi()) {
+        return 'ChatGPT, Google AI Modu ve Microsoft Copilot\'a Fatih\'te ortodonti sorulduğunda ilk sırada Çapa Ortodonti çıkıyor. Yanıtların tamamı ve ekran görüntüleri.';
+    }
+    return $desc;
+});
+add_filter('wpseo_title', function ($title) {
+    if (capa_ai_sayfa_mi()) {
+        return 'Yapay Zeka Ortodonti Önerisi | Çapa Ortodonti, Fatih';
+    }
+    return $title;
+});
+/* Blok kendi H1'ini veriyor — tema basligini kapat (cift H1 olmasin). */
+add_filter('hello_elementor_page_title', function ($show) {
+    if (capa_ai_sayfa_mi()) return false;
+    return $show;
+}, 11);
