@@ -1,21 +1,33 @@
-<!-- ÇAPA ORTODONTİ — Yapay zekâ kanıt sayfası · 28 Temmuz 2026 · görseller gömülü -->
+<!-- ÇAPA ORTODONTİ — Yapay zekâ kanıt sayfası · 28 Temmuz 2026
+     Hero deseni tedavi sayfalarıyla (ort-hero) birebir aynı. Görseller gömülü. -->
 
 <div id="capa-ai-2026">
 <style>
 #capa-ai-2026{--cap-mavi:#124e91;--cap-lac:#0f335f;--cap-govde:#43546e;--cap-teal:#0f9b8e;--cap-cta:#d9752b;--cap-zemin:#f5f8fc;--cap-kenar:#e7eef7;
-  background:var(--cap-zemin)!important;padding:28px 16px!important;border-radius:18px!important;
   font-family:inherit!important;line-height:1.62!important;-webkit-font-smoothing:antialiased}
 #capa-ai-2026 *{box-sizing:border-box}
-#capa-ai-2026 .cap-kapak{width:100%!important;border-radius:16px!important;overflow:hidden!important;
-  margin:0 0 18px!important;min-height:170px!important}
-#capa-ai-2026 .cap-kapak img{width:100%!important;height:auto!important;max-height:300px!important;object-fit:cover!important;object-position:center 62%!important;display:block!important;border-radius:16px!important}
-#capa-ai-2026 .cap-hero{background:linear-gradient(135deg,#1c74d4,#134c8f,#0f3f79)!important;color:#fff!important;
-  border-radius:16px!important;padding:26px 20px!important;margin:0 0 22px!important}
-#capa-ai-2026 .cap-hero h1{color:#fff!important;font-size:1.32rem!important;line-height:1.3!important;margin:0 0 12px!important;font-weight:800!important;letter-spacing:-.2px!important}
-#capa-ai-2026 .cap-hero p{color:#dcebff!important;font-size:1rem!important;margin:0!important}
-#capa-ai-2026 .cap-tarih{display:inline-block!important;background:rgba(255,255,255,.14)!important;color:#8fe6dd!important;
-  border:1px solid rgba(143,230,221,.45)!important;border-radius:999px!important;padding:5px 13px!important;
-  font-size:.8rem!important;font-weight:700!important;margin:0 0 14px!important;letter-spacing:.2px}
+
+/* ---- HERO (tedavi sayfalarıyla aynı desen) ---- */
+#capa-ai-2026 .cap-hero{position:relative!important;background:linear-gradient(135deg,#1c74d4 0%,#134c8f 55%,#0f3f79 100%)!important;
+  color:#fff!important;padding:46px 18px 52px!important;overflow:hidden!important}
+#capa-ai-2026 .cap-hero::before,#capa-ai-2026 .cap-hero::after{content:""!important;position:absolute!important;border-radius:50%!important;background:rgba(255,255,255,.06)!important}
+#capa-ai-2026 .cap-hero::before{width:320px!important;height:320px!important;top:-120px!important;right:-80px!important}
+#capa-ai-2026 .cap-hero::after{width:260px!important;height:260px!important;bottom:-140px!important;left:-60px!important}
+#capa-ai-2026 .cap-hero-inner{max-width:1100px!important;margin:0 auto!important;position:relative!important;z-index:1}
+#capa-ai-2026 .cap-bc{font-size:13px!important;color:rgba(255,255,255,.8)!important;margin-bottom:14px!important;letter-spacing:.3px}
+#capa-ai-2026 .cap-bc a{color:rgba(255,255,255,.8)!important;text-decoration:none!important}
+#capa-ai-2026 .cap-hero-grid{display:grid!important;grid-template-columns:1fr!important;gap:22px!important;align-items:center!important}
+#capa-ai-2026 .cap-hero h1{margin:0 0 12px!important;font-size:32px!important;line-height:1.15!important;font-weight:800!important;letter-spacing:.3px!important;color:#fff!important}
+#capa-ai-2026 .cap-hero-lead{font-size:16px!important;color:rgba(255,255,255,.92)!important;margin-bottom:20px!important}
+#capa-ai-2026 .cap-hero-chips{display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin-bottom:6px!important}
+#capa-ai-2026 .cap-chip{background:rgba(255,255,255,.14)!important;border:1px solid rgba(255,255,255,.22)!important;
+  padding:6px 13px!important;border-radius:999px!important;font-size:13px!important;font-weight:600!important;color:#fff!important}
+#capa-ai-2026 .cap-hero-img{border-radius:18px!important;overflow:hidden!important;box-shadow:0 18px 40px rgba(6,30,60,.35)!important;border:5px solid rgba(255,255,255,.18)!important}
+#capa-ai-2026 .cap-hero-img img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+
+/* ---- GÖVDE ---- */
+#capa-ai-2026 .cap-govde{background:var(--cap-zemin)!important;padding:34px 18px 40px!important}
+#capa-ai-2026 .cap-wrap{max-width:1100px!important;margin:0 auto!important}
 #capa-ai-2026 h2{color:var(--cap-lac)!important;font-size:1.22rem!important;font-weight:800!important;margin:30px 0 10px!important;line-height:1.3!important}
 #capa-ai-2026 h3{color:var(--cap-mavi)!important;font-size:1.02rem!important;font-weight:800!important;margin:0 0 4px!important}
 #capa-ai-2026 p{color:var(--cap-govde)!important;font-size:.97rem!important;margin:0 0 14px!important}
@@ -36,7 +48,7 @@
 #capa-ai-2026 .cap-kaynak{color:#6d7e94!important;font-size:.82rem!important;margin:0!important}
 #capa-ai-2026 .cap-ss{width:100%!important;border:1px solid var(--cap-kenar)!important;border-radius:10px!important;
   background:#eef4fb!important;overflow:hidden!important;margin:0 0 12px!important}
-#capa-ai-2026 .cap-ss img{width:100%!important;height:auto!important;border-radius:8px!important;display:block!important}
+#capa-ai-2026 .cap-ss img{width:100%!important;height:auto!important;display:block!important}
 #capa-ai-2026 ul{margin:0 0 14px!important;padding-left:20px!important}
 #capa-ai-2026 li{color:var(--cap-govde)!important;font-size:.96rem!important;margin:0 0 7px!important}
 #capa-ai-2026 li strong{color:var(--cap-lac)!important}
@@ -60,10 +72,10 @@
   border:2px solid #8fe6dd!important;text-decoration:none!important;border-radius:11px!important;padding:12px 20px!important;
   font-weight:700!important;font-size:.97rem!important}
 @media (min-width:768px){
-  #capa-ai-2026{padding:38px 32px!important}
-  #capa-ai-2026 .cap-kapak img{max-height:420px!important}
-  #capa-ai-2026 .cap-hero{padding:38px 34px!important}
-  #capa-ai-2026 .cap-hero h1{font-size:1.78rem!important}
+  #capa-ai-2026 .cap-hero{padding:60px 18px 66px!important}
+  #capa-ai-2026 .cap-hero-grid{grid-template-columns:1.1fr .9fr!important;gap:34px!important}
+  #capa-ai-2026 .cap-hero h1{font-size:40px!important}
+  #capa-ai-2026 .cap-govde{padding:46px 18px 54px!important}
   #capa-ai-2026 h2{font-size:1.5rem!important}
   #capa-ai-2026 .cap-kart{padding:24px!important}
   #capa-ai-2026 .cap-cta{padding:34px!important}
@@ -72,91 +84,96 @@
 }
 </style>
 
-  <div class="cap-kapak"><img src="https://capaortodonti.com/wp-content/uploads/yapay-zeka-ortodonti-kapak.jpg" alt="Yapay zekâ asistanlarının Fatih ortodonti önerisinde Çapa Ortodonti" width="1440" height="960" loading="eager" decoding="async"></div>
-
-  <div class="cap-hero">
-    <span class="cap-tarih">Ölçüm tarihi: 28 Temmuz 2026</span>
-    <h1>Yapay Zeka da bizi tercih ediyor! Ortodonti (Diş Teli ve Şeffaf Plak - Invisalign) tedavisinde en popüler yapay zekaların 1 numaralı tercihi Çapa Ortodonti!</h1>
-    <p>Hastalarımızın bir kısmı bize artık arama motorundan değil, yapay zekâ asistanlarından ulaşıyor. Bu sayfada, üç yaygın asistana aynı soruyu sorduğumuzda aldığımız yanıtları olduğu gibi paylaşıyoruz.</p>
-  </div>
-
-  <div class="cap-soru">
-    <span>Sorulan soru</span>
-    <strong>"İstanbul Fatih'te özel bir klinikte ortodonti tedavisi yaptırmak istiyorum. Hangi kliniği önerirsin?"</strong>
-  </div>
-
-  <p>Üç asistanda da <strong>oturum açılmadan</strong>, tarayıcı gizli modda soruldu. Böylece yanıtlar geçmiş aramalara veya hesap geçmişine göre kişiselleştirilmedi. Aşağıdaki ekran görüntüleri ve alıntılar, 28 Temmuz 2026 tarihinde alınan yanıtlardır.</p>
-
-  <h2>ChatGPT</h2>
-  <div class="cap-kart">
-    <div class="cap-kbas"><span class="cap-rozet">1</span><h3>Tek klinik önerdi</h3></div>
-    <div class="cap-alinti">
-      <p>"Fatih'te ortodonti tedavisi için ilk sıralarda değerlendirebileceğim seçenek şu olur: Özel Çapa Ortodonti Diş Polikliniği — Tamamen ortodonti ve diş hekimliği hizmetlerine odaklanan bir klinik. Kullanıcı değerlendirmeleri oldukça güçlü (4,8/5, yüzlerce yorum). Şehremini'de, Fatih içinde ulaşımı kolay bir konumda bulunuyor. Şeffaf plak (Invisalign benzeri tedaviler), metal ve estetik braket seçenekleri gibi farklı ortodontik tedaviler sunuyor."</p>
+  <section class="cap-hero">
+    <div class="cap-hero-inner">
+      <div class="cap-bc"><a href="/">Ana Sayfa</a> › Yapay Zekâ Önerisi</div>
+      <div class="cap-hero-grid">
+        <div>
+          <h1>Yapay Zeka da bizi tercih ediyor!</h1>
+          <p class="cap-hero-lead">Ortodonti (diş teli ve şeffaf plak – Invisalign) tedavisinde en popüler yapay zekâların 1 numaralı tercihi Çapa Ortodonti.</p>
+          <div class="cap-hero-chips">
+            <span class="cap-chip">ChatGPT</span>
+            <span class="cap-chip">Google AI Modu</span>
+            <span class="cap-chip">Microsoft Copilot</span>
+            <span class="cap-chip">28 Temmuz 2026</span>
+          </div>
+        </div>
+        <div class="cap-hero-img">
+          <img src="https://capaortodonti.com/wp-content/uploads/yapay-zeka-ortodonti-kapak.jpg" alt="Yapay zekâ asistanlarının Fatih ortodonti önerisinde Çapa Ortodonti" width="1440" height="960" loading="eager" decoding="async">
+        </div>
+      </div>
     </div>
-    <div class="cap-ss"><img src="https://capaortodonti.com/wp-content/uploads/chatgpt-fatih-ortodonti-onerisi-v2.jpg" alt="ChatGPT ekran görüntüsü: Fatih ortodonti önerisi Çapa Ortodonti" loading="lazy" decoding="async"></div>
-    <p class="cap-kaynak">ChatGPT ayrıca ilk muayenede sorulmasını önerdiği soruları listeledi: tedaviyi baştan sona aynı ortodonti uzmanının takip edip etmeyeceği, tedavi süresi, tel seçeneklerinin farkı, ücret ve kontrol sıklığı. Kaynak olarak DoktorTakvimi gösterildi.</p>
-  </div>
+  </section>
 
-  <h2>Google AI Modu</h2>
-  <div class="cap-kart">
-    <div class="cap-kbas"><span class="cap-rozet">2</span><h3>Listenin ilk sırasında</h3></div>
-    <div class="cap-alinti">
-      <p>"İstanbul Fatih'te özel bir klinikte ortodonti tedavisi (diş teli veya şeffaf plak) yaptırmak istiyorsanız, uzman hekim kadrosu, hasta memnuniyeti ve teknolojik donanımıyla öne çıkan en popüler klinikler şunlardır: Çapa Ortodonti Estetik Diş Kliniği — Fatih Şehremini'de yer alan ve doğrudan ortodonti üzerine odaklanmış köklü bir kliniktir. Özellikle şeffaf plak (Invisalign vb.) ve geleneksel diş teli tedavilerinde tecrübeli uzman kadrosuyla bilinmektedir."</p>
+  <div class="cap-govde">
+   <div class="cap-wrap">
+
+    <div class="cap-soru">
+      <span>Sorulan soru</span>
+      <strong>"İstanbul Fatih'te özel bir klinikte ortodonti tedavisi yaptırmak istiyorum. Hangi kliniği önerirsin?"</strong>
     </div>
-    <div class="cap-ss"><img src="https://capaortodonti.com/wp-content/uploads/google-ai-modu-fatih-ortodonti-onerisi-v2.jpg" alt="Google AI Modu ekran görüntüsü: Fatih ortodonti önerisi Çapa Ortodonti" loading="lazy" decoding="async"></div>
-    <p class="cap-kaynak">Google AI Modu bu kez kaynak olarak doğrudan capaortodonti.com adresini gösterdi.</p>
-  </div>
 
-  <h2>Microsoft Copilot</h2>
-  <div class="cap-kart">
-    <div class="cap-kbas"><span class="cap-rozet">3</span><h3>Önerilen klinikler tablosunda ilk sırada</h3></div>
-    <div class="cap-alinti">
-      <p>"Fatih'te ortodonti tedavisi için en çok öne çıkan özel klinikler arasında Çapa Ortodonti Estetik Diş Kliniği, Avrupa UBK Dental ve İstanbul Ortodonti bulunuyor. Bu klinikler hem uzman kadroları hem de modern teknolojileriyle güvenilir seçenekler sunuyor. — 16+ yıllık deneyim, 30.000+ hasta tedavisi, ortak tedavi planı, modern teknoloji · Fatih/İstanbul – 4,8★ Google değerlendirmesi"</p>
+    <p>Üç asistanda da <strong>oturum açılmadan</strong>, tarayıcı gizli modda soruldu. Böylece yanıtlar geçmiş aramalara veya hesap geçmişine göre kişiselleştirilmedi. Aşağıdaki ekran görüntüleri ve alıntılar, 28 Temmuz 2026 tarihinde alınan yanıtlardır.</p>
+
+    <h2>ChatGPT</h2>
+    <div class="cap-kart">
+      <div class="cap-kbas"><span class="cap-rozet">1</span><h3>Tek klinik önerdi</h3></div>
+      <div class="cap-alinti">
+        <p>"Fatih'te ortodonti tedavisi için ilk sıralarda değerlendirebileceğim seçenek şu olur: Özel Çapa Ortodonti Diş Polikliniği — Tamamen ortodonti ve diş hekimliği hizmetlerine odaklanan bir klinik. Kullanıcı değerlendirmeleri oldukça güçlü (4,8/5, yüzlerce yorum). Şehremini'de, Fatih içinde ulaşımı kolay bir konumda bulunuyor. Şeffaf plak (Invisalign benzeri tedaviler), metal ve estetik braket seçenekleri gibi farklı ortodontik tedaviler sunuyor."</p>
+      </div>
+      <div class="cap-ss"><img src="https://capaortodonti.com/wp-content/uploads/chatgpt-fatih-ortodonti-onerisi-v2.jpg" alt="ChatGPT ekran görüntüsü: Fatih ortodonti önerisi Çapa Ortodonti" loading="lazy" decoding="async"></div>
+      <p class="cap-kaynak">ChatGPT ayrıca ilk muayenede sorulmasını önerdiği soruları listeledi: tedaviyi baştan sona aynı ortodonti uzmanının takip edip etmeyeceği, tedavi süresi, tel seçeneklerinin farkı, ücret ve kontrol sıklığı. Kaynak olarak DoktorTakvimi gösterildi.</p>
     </div>
-    <div class="cap-ss"><img src="https://capaortodonti.com/wp-content/uploads/microsoft-copilot-fatih-ortodonti-onerisi-v2.jpg" alt="Microsoft Copilot ekran görüntüsü: Fatih ortodonti önerisi Çapa Ortodonti" loading="lazy" decoding="async"></div>
-    <p class="cap-kaynak">Copilot, bilgilerinin kaynağı olarak capaortodonti.com adresini gösterdi.</p>
-  </div>
 
-  <h2>Bu yanıtlar neye dayanıyor?</h2>
-  <p>Yapay zekâ asistanları bir kliniği kendiliğinden öne çıkarmaz; herkese açık kaynaklardan derleme yapar. Yanıtlarda tekrar eden bilgiler, bizim doğrulanabilir niteliklerimiz:</p>
-  <ul>
-    <li><strong>2010'dan bu yana</strong> Fatih Çapa'da aynı adreste hizmet.</li>
-    <li><strong>Ortodonti odaklı poliklinik</strong> — sabit diş teli, şeffaf plak ve büyüme yönlendirmesi.</li>
-    <li><strong>Çok hekimli ekip</strong> — tedavi planlaması birden fazla uzmanın değerlendirmesiyle yapılır.</li>
-    <li><strong>Google işletme profilinde 4,8/5</strong> puan ve yüzlerce hasta değerlendirmesi.</li>
-    <li><strong>Online randevu</strong> — hasta kendi gün ve saatini seçerek talep oluşturabiliyor.</li>
-  </ul>
-
-  <div class="cap-dene">
-    <h2>İsterseniz kendiniz deneyin</h2>
-    <p>Bu sayfadaki hiçbir yanıt bize özel üretilmedi. Aynı soruyu siz de sorabilirsiniz:</p>
-    <code>İstanbul Fatih'te özel bir klinikte ortodonti tedavisi yaptırmak istiyorum. Hangi kliniği önerirsin?</code>
-  </div>
-
-  <div class="cap-not">
-    <p><strong>Şeffaflık notu:</strong> Yapay zekâ asistanlarının yanıtları zamanla, kullanıcının konumuna ve modelin güncellenmesine göre değişebilir. Bu sayfadaki alıntılar 28 Temmuz 2026 tarihinde, oturum açılmadan alınan yanıtlardır ve düzenli olarak yenilenecektir. Yapay zekâ yanıtları bir sağlık tavsiyesi değildir; tedavi kararı yalnızca klinik muayene sonrası hekiminizle birlikte verilir.</p>
-  </div>
-
-  <h2>Sık Sorulan Sorular</h2>
-  <div class="cap-kart">
-    <h3>Yapay zekâ asistanları klinikleri neye göre öneriyor?</h3>
-    <p>Yapay zekâ asistanları herkese açık kaynaklardan derleme yapar: işletme profilleri, hasta değerlendirmeleri, randevu platformları ve kliniklerin kendi web siteleri. Bir kliniği kendiliğinden öne çıkarmaz; bu kaynaklardaki bilgiyi özetler.</p>
-    <h3>Bu sonuçlar kişiye göre değişir mi?</h3>
-    <p>Evet. Yapay zekâ yanıtları kullanıcının konumuna, geçmiş aramalarına ve modelin güncellenmesine göre değişebilir. Bu sayfadaki yanıtlar oturum açılmadan, kişiselleştirme olmadan alınmıştır.</p>
-    <h3>Aynı soruyu ben sorsam aynı sonucu alır mıyım?</h3>
-    <p>Büyük ölçüde benzer bir yanıt almanız beklenir, ancak birebir aynı olmayabilir. Sayfada kullandığımız soruyu olduğu gibi paylaşıyoruz; dilediğiniz zaman kendiniz deneyebilirsiniz.</p>
-    <h3>Yapay zekânın önerisi bir tedavi tavsiyesi midir?</h3>
-    <p>Hayır. Yapay zekâ yanıtları yalnızca bilgilendirme amaçlıdır ve klinik muayenenin yerini tutmaz. Diş teli mi şeffaf plak mı sorusunun cevabı, ağız içi muayene ve röntgen değerlendirmesiyle netleşir.</p>
-    <h3>Ortodonti tedavisi için nasıl randevu alabilirim?</h3>
-    <p>Online randevu sayfamızdan hekiminizi, gün ve saatinizi seçerek randevu talebi oluşturabilir ya da (0212) 587 24 24 numaralı telefondan kliniğimize ulaşabilirsiniz.</p>
-  </div>
-
-  <div class="cap-cta">
-    <h2>Ortodonti muayenesi için randevu</h2>
-    <p>Diş teli mi şeffaf plak mı sorusunun cevabı ağız içi muayenede netleşir. Gününüzü ve saatinizi seçin.</p>
-    <div class="cap-btnler">
-      <a class="cap-btn" href="/online-randevu/">Online randevu oluştur</a>
-      <a class="cap-btn2" href="tel:+902125872424">(0212) 587 24 24</a>
+    <h2>Google AI Modu</h2>
+    <div class="cap-kart">
+      <div class="cap-kbas"><span class="cap-rozet">1</span><h3>Listenin ilk sırasında</h3></div>
+      <div class="cap-alinti">
+        <p>"İstanbul Fatih'te özel bir klinikte ortodonti tedavisi (diş teli veya şeffaf plak) yaptırmak istiyorsanız, uzman hekim kadrosu, hasta memnuniyeti ve teknolojik donanımıyla öne çıkan en popüler klinikler şunlardır: Çapa Ortodonti Estetik Diş Kliniği — Fatih Şehremini'de yer alan ve doğrudan ortodonti üzerine odaklanmış köklü bir kliniktir. Özellikle şeffaf plak (Invisalign vb.) ve geleneksel diş teli tedavilerinde tecrübeli uzman kadrosuyla bilinmektedir."</p>
+      </div>
+      <div class="cap-ss"><img src="https://capaortodonti.com/wp-content/uploads/google-ai-modu-fatih-ortodonti-onerisi-v2.jpg" alt="Google AI Modu ekran görüntüsü: Fatih ortodonti önerisi Çapa Ortodonti" loading="lazy" decoding="async"></div>
+      <p class="cap-kaynak">Google AI Modu bu kez kaynak olarak doğrudan capaortodonti.com adresini gösterdi.</p>
     </div>
+
+    <h2>Microsoft Copilot</h2>
+    <div class="cap-kart">
+      <div class="cap-kbas"><span class="cap-rozet">1</span><h3>Önerilen klinikler tablosunda ilk sırada</h3></div>
+      <div class="cap-alinti">
+        <p>"Fatih'te ortodonti tedavisi için en çok öne çıkan özel klinikler arasında Çapa Ortodonti Estetik Diş Kliniği, Avrupa UBK Dental ve İstanbul Ortodonti bulunuyor. Bu klinikler hem uzman kadroları hem de modern teknolojileriyle güvenilir seçenekler sunuyor. — 16+ yıllık deneyim, 30.000+ hasta tedavisi, ortak tedavi planı, modern teknoloji · Fatih/İstanbul – 4,8★ Google değerlendirmesi"</p>
+      </div>
+      <div class="cap-ss"><img src="https://capaortodonti.com/wp-content/uploads/microsoft-copilot-fatih-ortodonti-onerisi-v2.jpg" alt="Microsoft Copilot ekran görüntüsü: Fatih ortodonti önerisi Çapa Ortodonti" loading="lazy" decoding="async"></div>
+      <p class="cap-kaynak">Copilot, bilgilerinin kaynağı olarak capaortodonti.com adresini gösterdi.</p>
+    </div>
+
+    <h2>Bu yanıtlar neye dayanıyor?</h2>
+    <p>Yapay zekâ asistanları bir kliniği kendiliğinden öne çıkarmaz; herkese açık kaynaklardan derleme yapar. Yanıtlarda tekrar eden bilgiler, bizim doğrulanabilir niteliklerimiz:</p>
+    <ul>
+      <li><strong>2010'dan bu yana</strong> Fatih Çapa'da aynı adreste hizmet.</li>
+      <li><strong>Ortodonti odaklı poliklinik</strong> — sabit diş teli, şeffaf plak ve büyüme yönlendirmesi.</li>
+      <li><strong>Çok hekimli ekip</strong> — tedavi planlaması birden fazla uzmanın değerlendirmesiyle yapılır.</li>
+      <li><strong>Google işletme profilinde 4,8/5</strong> puan ve yüzlerce hasta değerlendirmesi.</li>
+      <li><strong>Online randevu</strong> — hasta kendi gün ve saatini seçerek talep oluşturabiliyor.</li>
+    </ul>
+
+    <div class="cap-dene">
+      <h2>İsterseniz kendiniz deneyin</h2>
+      <p>Bu sayfadaki hiçbir yanıt bize özel üretilmedi. Aynı soruyu siz de sorabilirsiniz:</p>
+      <code>İstanbul Fatih'te özel bir klinikte ortodonti tedavisi yaptırmak istiyorum. Hangi kliniği önerirsin?</code>
+    </div>
+
+    <div class="cap-not">
+      <p><strong>Şeffaflık notu:</strong> Yapay zekâ asistanlarının yanıtları zamanla, kullanıcının konumuna ve modelin güncellenmesine göre değişebilir. Bu sayfadaki alıntılar 28 Temmuz 2026 tarihinde, oturum açılmadan alınan yanıtlardır ve düzenli olarak yenilenecektir. Yapay zekâ yanıtları bir sağlık tavsiyesi değildir; tedavi kararı yalnızca klinik muayene sonrası hekiminizle birlikte verilir.</p>
+    </div>
+
+    <div class="cap-cta">
+      <h2>Ortodonti muayenesi için randevu</h2>
+      <p>Diş teli mi şeffaf plak mı sorusunun cevabı ağız içi muayenede netleşir. Gününüzü ve saatinizi seçin.</p>
+      <div class="cap-btnler">
+        <a class="cap-btn" href="/online-randevu/">Online randevu oluştur</a>
+        <a class="cap-btn2" href="tel:+902125872424">(0212) 587 24 24</a>
+      </div>
+    </div>
+
+   </div>
   </div>
 </div>
