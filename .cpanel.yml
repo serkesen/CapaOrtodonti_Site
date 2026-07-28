@@ -5,3 +5,5 @@ deployment:
     - /bin/mkdir -p $PLUGINDIR/assets/css
     - /usr/bin/rsync -a site-customizations.php $PLUGINDIR/
     - /usr/bin/rsync -a assets/css/site-custom.css $PLUGINDIR/assets/css/
+    - /bin/mkdir -p $PLUGINDIR/assets/blocks
+    - /usr/bin/rsync -a --delete assets/blocks/ $PLUGINDIR/assets/blocks/
