@@ -741,3 +741,60 @@ add_filter('the_content', function ($content) {
     if (!in_array($slug, capa_ortodonti_kume(), true)) return $content;
     return $content . capa_ic_link_blogu($slug);
 }, 998);
+
+
+/* ============================================================================
+   capa-derinlik + capa-birlesme — 28 Tem 2026
+   Ortodonti kumesi birlestirmesi. Karar: ince ikizler 301'lenir, ama once
+   icerikleri hayatta kalan sayfaya tasinir — yoksa birlestirme icerik kaybi olur.
+   Derinlik bloklari FAQ'tan ONCE girsin diye priority 11 (SSS filtresi 12).
+   ============================================================================ */
+if (!function_exists('capa_derinlik_haritasi')) {
+    function capa_derinlik_haritasi() {
+        /* slug => blok dosya adi (assets/blocks/<ad>.html) */
+        return array(
+            'ortodonti'      => 'ortodonti-derinlik',   /* /dis-teli-tedavisi/, /ortodontide-risk/,
+                                                           /eksik-dislerde-tel-tedavisi/ icerigi */
+            'retainer-nedir' => 'retainer-derinlik',    /* /retainer-nedir-pekistirme-tedavisi/ icerigi */
+        );
+    }
+}
+add_filter('the_content', function ($content) {
+    if (!is_singular(array('post', 'page')) || !in_the_loop() || !is_main_query()) return $content;
+    if (strpos($content, 'capa-ort-derinlik') !== false || strpos($content, 'capa-ret-derinlik') !== false) return $content;
+    $harita = capa_derinlik_haritasi();
+    $slug = get_post_field('post_name', get_the_ID());
+    if (!isset($harita[$slug])) return $content;
+    return $content . capa_blok_oku($harita[$slug]);
+}, 11);
+
+/* Birlestirilen sayfalar: 301. Bu sayfalar hala 200 donduyor, bu yuzden
+   is_404() tabanli capa_eski_url_yonlendir() ise yaramaz — slug ile yakalanir. */
+if (!function_exists('capa_birlesme_yonlendir')) {
+    function capa_birlesme_yonlendir() {
+        if (is_admin() || !is_singular(array('post', 'page'))) return;
+        $harita = array(
+            'dis-teli-tedavisi'                 => '/ortodonti/',
+            'gorunmeyen-dis-teli'               => '/ortodonti/',
+            'eriskin-tel-tedavisi'              => '/eriskin-ortodontisi/',
+            'retainer-nedir-pekistirme-tedavisi' => '/retainer-nedir/',
+        );
+        $slug = get_post_field('post_name', get_queried_object_id());
+        if ($slug && isset($harita[$slug])) {
+            wp_redirect(home_url($harita[$slug]), 301);
+            exit;
+        }
+    }
+}
+add_action('template_redirect', 'capa_birlesme_yonlendir', 1);
+
+/* Birlestirilen URL'ler sitemap'ten de cikmali (Yoast). */
+add_filter('wpseo_exclude_from_sitemap_by_post_ids', function ($ids) {
+    $slugler = array('dis-teli-tedavisi', 'gorunmeyen-dis-teli',
+                     'eriskin-tel-tedavisi', 'retainer-nedir-pekistirme-tedavisi');
+    foreach ($slugler as $s) {
+        $p = get_page_by_path($s, OBJECT, array('post', 'page'));
+        if ($p) $ids[] = $p->ID;
+    }
+    return array_values(array_unique($ids));
+});
