@@ -641,3 +641,103 @@ if (!function_exists('capa_eski_url_yonlendir')) {
     }
 }
 add_action('template_redirect', 'capa_eski_url_yonlendir', 1);
+
+
+/* ============================================================================
+   capa-ortodonti-ic-link — 28 Tem 2026
+   Neden: /ortodonti/ ticari sayfasi 161 sayfalik sitede govde metninden yalnizca
+   7 ic link aliyordu (ucu metinsiz gorsel linki), /dis-teli-fiyatlari.../ ise 0.
+   Ortodonti konusu 20'ye yakin ince yaziya dagilmis ve hicbiri hub'a baglanmiyor.
+   Bu blok, ortodonti kumesindeki yazilarin sonuna anlamli capa metinleriyle
+   hub'a giden baglantilar ekler. Kendi kendine link vermez.
+   ⚠ Elementor sayfalarinda the_content birden fazla kez tetiklenir -> imza kontrolu.
+   ============================================================================ */
+if (!function_exists('capa_ortodonti_kume')) {
+    function capa_ortodonti_kume() {
+        return array(
+            'tel-tedavisi-surerken-olusabilecek-sorunlar',
+            'dis-teli-agrisina-ne-iyi-gelir',
+            'braket-secimi-ve-dis-teli-cesitleri',
+            'retainer-nedir',
+            'retainer-nedir-pekistirme-tedavisi',
+            'ortodontist-nedir-ortodonti-tedavileri-nelerdir',
+            'cocuk-ortodontisi',
+            'eksik-dislerde-tel-tedavisi',
+            'dis-teli-tedavisi',
+            'renkli-dis-telleri-genclerde-trend-oluyor',
+            'ortognatik-cene-cerrahisi',
+            'hipodonti-nedir',
+            'gorunmeyen-dis-teli',
+            'eriskin-tel-tedavisi',
+            'eriskin-ortodontisi',
+            'ortodontide-risk',
+            'dis-teli-fiyatlari-belirlenmesi-ve-etkileyen-faktorler',
+            'temporomandibuler-eklem-tme-tmeb-tedavisi',
+            'cene-eklemi-bozukluklari',
+            'distraksiyon-osteogenezi',
+        );
+    }
+}
+
+if (!function_exists('capa_ic_link_blogu')) {
+    function capa_ic_link_blogu($mevcut_slug) {
+        /* Hedefler: capa metni ONEMLI — "devamini oku" degil, konuyu anlatan metin. */
+        $hedefler = array(
+            array('yol' => '/ortodonti/', 'slug' => 'ortodonti',
+                  'capa' => 'Ortodonti tedavisi',
+                  'not'  => 'Diş teli, şeffaf plak ve çocuk ortodontisi seçeneklerinin tamamı'),
+            array('yol' => '/seffaf-plak-tedavisi-invisalign/', 'slug' => 'seffaf-plak-tedavisi-invisalign',
+                  'capa' => 'Şeffaf plak (Invisalign) tedavisi',
+                  'not'  => 'Görünmez plakla tedavi kimlere uygun, nasıl ilerler'),
+            array('yol' => '/dis-teli-fiyatlari-belirlenmesi-ve-etkileyen-faktorler/',
+                  'slug' => 'dis-teli-fiyatlari-belirlenmesi-ve-etkileyen-faktorler',
+                  'capa' => 'Diş teli tedavisinde maliyeti belirleyen faktörler',
+                  'not'  => 'Braket türü, tedavi süresi ve çene kapsamının etkisi'),
+        );
+
+        $satir = '';
+        foreach ($hedefler as $h) {
+            if ($h['slug'] === $mevcut_slug) continue;   /* kendine link verme */
+            $satir .= '<li><a href="' . esc_url($h['yol']) . '">' . esc_html($h['capa']) . '</a>'
+                    . '<span>' . esc_html($h['not']) . '</span></li>';
+        }
+        if ($satir === '') return '';
+
+        $css = '#capa-ic-link{--il-lac:#0f335f;--il-mavi:#124e91;--il-govde:#43546e;--il-teal:#0f9b8e;'
+             . '--il-cta:#d9752b;--il-kenar:#e7eef7;--il-zemin:#f5f8fc;'
+             . 'max-width:1120px!important;margin:30px auto!important;font-family:inherit!important;line-height:1.6!important}'
+             . '#capa-ic-link *{box-sizing:border-box}'
+             . '#capa-ic-link .ilk{background:var(--il-zemin)!important;border:1px solid var(--il-kenar)!important;'
+             . 'border-radius:16px!important;padding:20px 18px!important}'
+             . '#capa-ic-link h3{color:var(--il-lac)!important;font-size:1.08rem!important;font-weight:800!important;'
+             . 'margin:0 0 4px!important;letter-spacing:-.2px!important}'
+             . '#capa-ic-link .ilgiris{color:var(--il-govde)!important;font-size:.9rem!important;margin:0 0 14px!important}'
+             . '#capa-ic-link ul{list-style:none!important;margin:0!important;padding:0!important}'
+             . '#capa-ic-link li{border-top:1px solid var(--il-kenar)!important;padding:11px 0!important}'
+             . '#capa-ic-link li:first-child{border-top:0!important;padding-top:0!important}'
+             . '#capa-ic-link li a{color:var(--il-mavi)!important;font-weight:700!important;font-size:1rem!important;'
+             . 'text-decoration:none!important;display:inline-block!important}'
+             . '#capa-ic-link li a:hover{text-decoration:underline!important}'
+             . '#capa-ic-link li span{display:block!important;color:var(--il-govde)!important;font-size:.86rem!important;margin-top:2px!important}'
+             . '#capa-ic-link .ilcta{display:inline-flex!important;align-items:center!important;gap:8px!important;'
+             . 'margin-top:16px!important;background:var(--il-cta)!important;color:#fff!important;text-decoration:none!important;'
+             . 'border-radius:10px!important;padding:11px 20px!important;font-weight:800!important;font-size:.95rem!important}'
+             . '@media (min-width:768px){#capa-ic-link .ilk{padding:26px 28px!important}'
+             . '#capa-ic-link h3{font-size:1.25rem!important}}';
+
+        return '<div id="capa-ic-link"><style>' . $css . '</style><div class="ilk">'
+             . '<h3>Ortodonti tedavisi hakkında</h3>'
+             . '<p class="ilgiris">Bu konuyla ilgili ayrıntılı sayfalarımız:</p>'
+             . '<ul>' . $satir . '</ul>'
+             . '<a class="ilcta" href="/online-randevu/">Muayene için randevu alın</a>'
+             . '</div></div>';
+    }
+}
+
+add_filter('the_content', function ($content) {
+    if (!is_singular(array('post', 'page')) || !in_the_loop() || !is_main_query()) return $content;
+    if (strpos($content, 'capa-ic-link') !== false) return $content;
+    $slug = get_post_field('post_name', get_the_ID());
+    if (!in_array($slug, capa_ortodonti_kume(), true)) return $content;
+    return $content . capa_ic_link_blogu($slug);
+}, 998);
