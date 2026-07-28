@@ -480,7 +480,11 @@ function capa_randevu_say(WP_REST_Request $req) {
     set_transient($key, $n + 1, HOUR_IN_SECONDS);
 
     $tip = sanitize_text_field((string) $req->get_param('tip'));
-    if (!in_array($tip, array('dentsoft', 'genel'), true)) $tip = 'dentsoft';
+    // 'test' (28 Tem 2026): Capa Randevu eklentisi test modunda bu etiketi
+    // gonderir. Sayaca YAZILIR — olcum hattinin calistigini canliya almadan
+    // dogrulayabilmek icin. Dashboard'a ULASMAZ; asagidaki ozet sorgusu
+    // tip='test' satirlarini disariyor.
+    if (!in_array($tip, array('dentsoft', 'genel', 'test'), true)) $tip = 'dentsoft';
 
     $hekim = trim(sanitize_text_field((string) $req->get_param('hekim')));
     if ($hekim === '') $hekim = '(yok)';
@@ -528,7 +532,8 @@ function capa_randevu_ozet_sayactan(WP_REST_Request $req) {
 
     $res = $wpdb->get_results($wpdb->prepare(
         "SELECT gun, tip, hekim, adet, fark_top, fark_n
-         FROM {$t} WHERE gun >= %s AND gun <= %s ORDER BY gun ASC", $from, $to), ARRAY_A);
+         FROM {$t} WHERE tip <> 'test' AND gun >= %s AND gun <= %s
+         ORDER BY gun ASC", $from, $to), ARRAY_A);
 
     $rows = array();
     if (is_array($res)) {
