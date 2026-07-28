@@ -554,7 +554,7 @@ function capa_randevu_ozet_sayactan(WP_REST_Request $req) {
    Sayfa govdesi WP editorunde (media ID 9186-9191 gomulu).
    Tanitim blogu REPODA: assets/blocks/yapay-zeka-tanitim.html —
    3607 (Elementor sayfasi) ve 7024 (post) icin the_content enjeksiyonu.
-   Kapsam: tanitim blogu + SSS + FAQPage schema + Yoast meta + cift H1 onlemi.
+   Kapsam: tanitim blogu + Yoast meta + cift H1 onlemi. (SSS/schema yok - 28 Tem)
    ============================================================ */
 if (!defined('CAPA_AI_PAGE'))    define('CAPA_AI_PAGE', 9185);
 if (!defined('CAPA_AI_TANITIM')) define('CAPA_AI_TANITIM', '3607,7024'); // ortodonti sayfasi + seffaf plak postu
@@ -595,15 +595,8 @@ add_filter('the_content', function ($content) {
     return $content . capa_blok_oku('yapay-zeka-tanitim');
 }, 999);
 
-add_action('wp_head', function () {
-    if (!capa_ai_sayfa_mi()) return;
-    $items = array();
-    foreach (capa_ai_faqs() as $qa) {
-        $items[] = array('@type' => 'Question', 'name' => $qa[0], 'acceptedAnswer' => array('@type' => 'Answer', 'text' => $qa[1]));
-    }
-    $schema = array('@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $items);
-    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
-}, 99);
+/* FAQPage schema KALDIRILDI (28 Tem): sayfadan gorunur SSS bolumu cikarildi,
+   schema gorunur icerikle eslesmek zorunda. capa_ai_faqs() referans olarak duruyor. */
 
 add_filter('wpseo_metadesc', function ($desc) {
     if (capa_ai_sayfa_mi()) {
