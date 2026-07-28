@@ -584,33 +584,16 @@ if (!function_exists('capa_ai_faqs')) {
     }
 }
 
-/* 1) Sayfa blogu + SSS  2) tedavi sayfalarina tanitim blogu */
+/* Tedavi sayfalarina tanitim blogu. SSS artik blogun kendi icinde (schema asagida).
+   ⚠ Elementor sayfalarinda the_content birden fazla kez tetiklenir -> static bayrak
+   yanlis cagriyi isaretliyordu. Bunun yerine icerikte imza aranir, priority 999. */
 add_filter('the_content', function ($content) {
-    if (!is_singular(array('post', 'page'))) return $content;
-    $id = get_the_ID();
-
-    if (capa_ai_sayfa_mi()) {
-        // Sayfa govdesi WP editorunde (Editor = Canli). Buraya yalniz SSS eklenir.
-        static $done = false;
-        if ($done) return $content;
-        $done = true;
-        $sss = '<section class="capa-faq"><h2>Sık Sorulan Sorular</h2>';
-        foreach (capa_ai_faqs() as $qa) {
-            $sss .= '<h3>' . esc_html($qa[0]) . '</h3><p>' . esc_html($qa[1]) . '</p>';
-        }
-        $sss .= '</section>';
-        return $content . $sss;
-    }
-
+    if (!is_singular(array('post', 'page')) || !in_the_loop() || !is_main_query()) return $content;
     $hedef = array_map('intval', explode(',', CAPA_AI_TANITIM));
-    if (in_array((int) $id, $hedef, true)) {
-        static $t = array();
-        if (isset($t[$id])) return $content;
-        $t[$id] = true;
-        return $content . capa_blok_oku('yapay-zeka-tanitim');
-    }
-    return $content;
-}, 13);
+    if (!in_array((int) get_the_ID(), $hedef, true)) return $content;
+    if (strpos($content, 'capa-ai-tanitim') !== false) return $content;
+    return $content . capa_blok_oku('yapay-zeka-tanitim');
+}, 999);
 
 add_action('wp_head', function () {
     if (!capa_ai_sayfa_mi()) return;
