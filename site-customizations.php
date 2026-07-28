@@ -551,10 +551,10 @@ function capa_randevu_ozet_sayactan(WP_REST_Request $req) {
 /* ============================================================
    capa-ai-sayfasi — Yapay zeka kanit sayfasi (27 Tem 2026)
    Sayfa: 9185 /yapay-zeka-ortodonti-onerisi/
-   Icerik bloklari REPODA: assets/blocks/*.html — surum kontrollu,
-   WP editorunde tutulmuyor (capa-faq-system ile ayni desen).
-   Kapsam: sayfa blogu + tanitim blogu (3607/7024) + SSS + FAQPage
-           schema + Yoast meta + cift H1 onlemi.
+   Sayfa govdesi WP editorunde (media ID 9186-9191 gomulu).
+   Tanitim blogu REPODA: assets/blocks/yapay-zeka-tanitim.html —
+   3607 (Elementor sayfasi) ve 7024 (post) icin the_content enjeksiyonu.
+   Kapsam: tanitim blogu + SSS + FAQPage schema + Yoast meta + cift H1 onlemi.
    ============================================================ */
 if (!defined('CAPA_AI_PAGE'))    define('CAPA_AI_PAGE', 9185);
 if (!defined('CAPA_AI_TANITIM')) define('CAPA_AI_TANITIM', '3607,7024'); // ortodonti sayfasi + seffaf plak postu
@@ -590,16 +590,16 @@ add_filter('the_content', function ($content) {
     $id = get_the_ID();
 
     if (capa_ai_sayfa_mi()) {
+        // Sayfa govdesi WP editorunde (Editor = Canli). Buraya yalniz SSS eklenir.
         static $done = false;
         if ($done) return $content;
         $done = true;
-        $html = capa_blok_oku('yapay-zeka-sayfasi');
-        $sss  = '<section class="capa-faq"><h2>Sık Sorulan Sorular</h2>';
+        $sss = '<section class="capa-faq"><h2>Sık Sorulan Sorular</h2>';
         foreach (capa_ai_faqs() as $qa) {
             $sss .= '<h3>' . esc_html($qa[0]) . '</h3><p>' . esc_html($qa[1]) . '</p>';
         }
         $sss .= '</section>';
-        return $html . $content . $sss;
+        return $content . $sss;
     }
 
     $hedef = array_map('intval', explode(',', CAPA_AI_TANITIM));
