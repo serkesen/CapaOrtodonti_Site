@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Capa Ortodonti Site Customizations
+ * Plugin Name: CapaOrtodonti - Site Customizations
  * Description: Site-wide CSS/PHP customizations under version control.
  * Version: 1.0.0
- * Author: Serdar
+ * Author: Serdar Erkesen
  */
 
 if (!defined('ABSPATH')) exit;
