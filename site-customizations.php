@@ -867,3 +867,26 @@ add_action('template_redirect', function () {
         exit;
     }
 }, 1);
+
+/* capa-kategori-arsiv-301 — 30 Tem 2026
+   "Doktorlar" (41) ve "Tedaviler" (24) kategorileri sayfalara atanmis durumda;
+   /hekimlerimiz/ ve /tedaviler/ hub'lari icerigi bu kategorilerden cekiyor
+   (Elementor Posts widget, posts_include_term_ids). Kategoriler bu yuzden
+   silinemez — ama WP'nin urettigi arsiv URL'leri ikiz sayfa yaratiyor:
+   tema varsayilani gorunum, sifir tik, kadro/tedavi listesini ikinci kez
+   yayinliyor. Arsivleri hub'lara 301'liyoruz; blog kategorileri
+   (agiz-ve-dis-sagligi, genel-saglik) DOKUNULMUYOR. */
+add_action('template_redirect', function () {
+    if (is_admin() || !is_category()) {
+        return;
+    }
+    $harita = array(
+        41 => '/hekimlerimiz/',
+        24 => '/tedaviler/',
+    );
+    $id = (int) get_queried_object_id();
+    if (isset($harita[$id])) {
+        wp_redirect(home_url($harita[$id]), 301);
+        exit;
+    }
+}, 1);
