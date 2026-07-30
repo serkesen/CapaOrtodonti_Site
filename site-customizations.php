@@ -825,3 +825,25 @@ add_filter('wpseo_exclude_from_sitemap_by_post_ids', function ($ids) {
     }
     return array_values(array_unique($ids));
 });
+
+/* ============================================================================
+   capa-yoast-meta-rest — 30 Tem 2026
+   Yoast, _yoast_wpseo_title / _yoast_wpseo_metadesc alanlarini REST'e YALNIZ
+   'post' tipinde aciyor; 'page' tipinde acmiyor. Bu yuzden sayfa metalari
+   toplu olarak yazilamiyor, her sayfa tek tek editorde acilmak zorunda
+   kaliniyordu (30 Tem: 7 sayfa icin Gutenberg metabox yolu kullanildi).
+   Bu blok ayni iki alani 'page' tipinde de REST'e acar. Yetki degismiyor:
+   yalnizca ilgili sayfayi duzenleyebilen kullanici yazabilir.
+   ============================================================================ */
+add_action('init', function () {
+    foreach (array('_yoast_wpseo_metadesc', '_yoast_wpseo_title') as $anahtar) {
+        register_post_meta('page', $anahtar, array(
+            'type'          => 'string',
+            'single'        => true,
+            'show_in_rest'  => true,
+            'auth_callback' => function ($allowed, $meta_key, $post_id) {
+                return current_user_can('edit_post', $post_id);
+            },
+        ));
+    }
+}, 20);
