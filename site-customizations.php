@@ -853,3 +853,17 @@ add_action('init', function () {
         ));
     }
 }, 20);
+
+/* capa-kadro-disi-hekim — 30 Tem 2026
+   Klinik kadrosunda olmayan hekim sayfasi copo tasindi; eski URL /hekimlerimiz/
+   adresine 301 doner. Bagimsiz blok: mevcut harita fonksiyonuna dokunulmuyor. */
+add_action('template_redirect', function () {
+    if (is_admin() || !is_404()) {
+        return;
+    }
+    $yol = trim((string) parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+    if ($yol === 'dt-sahra-topaloglu') {
+        wp_redirect(home_url('/hekimlerimiz/'), 301);
+        exit;
+    }
+}, 1);
