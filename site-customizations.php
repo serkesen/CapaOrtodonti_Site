@@ -798,6 +798,12 @@ if (!function_exists('capa_birlesme_yonlendir')) {
             'gorunmeyen-dis-teli'               => '/ortodonti/',
             'eriskin-tel-tedavisi'              => '/eriskin-ortodontisi/',
             'retainer-nedir-pekistirme-tedavisi' => '/retainer-nedir/',
+            // 30 Tem 2026 — mevzuat (Saglik Tanitim Yonetmeligi, RG 29.07.2023).
+            // /en/dental-implants-cost/ fiyat rakami, "Affordable Prices"
+            // basligi ve yanlis marka adi ("Capa Aesthetic Clinic Turkey")
+            // iceriyordu. Sayfanin varlik sebebi fiyat oldugu icin icerik
+            // temizligi degil yonlendirme secildi.
+            'dental-implants-cost'              => '/en/implant-treatment/',
         );
         $slug = get_post_field('post_name', get_queried_object_id());
         if ($slug && isset($harita[$slug])) {
@@ -811,7 +817,8 @@ add_action('template_redirect', 'capa_birlesme_yonlendir', 1);
 /* Birlestirilen URL'ler sitemap'ten de cikmali (Yoast). */
 add_filter('wpseo_exclude_from_sitemap_by_post_ids', function ($ids) {
     $slugler = array('dis-teli-tedavisi', 'gorunmeyen-dis-teli',
-                     'eriskin-tel-tedavisi', 'retainer-nedir-pekistirme-tedavisi');
+                     'eriskin-tel-tedavisi', 'retainer-nedir-pekistirme-tedavisi',
+                     'dental-implants-cost');
     foreach ($slugler as $s) {
         $p = get_page_by_path($s, OBJECT, array('post', 'page'));
         if ($p) $ids[] = $p->ID;
