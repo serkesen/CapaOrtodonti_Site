@@ -890,3 +890,13 @@ add_action('template_redirect', function () {
         exit;
     }
 }, 1);
+
+/* capa-sayfa-ozet-destegi — 30 Tem 2026
+   WordPress'te 'page' tipi varsayilan olarak excerpt (ozet) DESTEKLEMEZ.
+   /hekimlerimiz/ kartlari Elementor Posts (classic skin) ile uretiliyor ve
+   hekim adinin altindaki bolum bilgisi (Ortodonti, Protez, Dis Hekimi)
+   sayfa ozetinden okunuyor. Destek acilmadan ozet alani doluyken bile
+   frontend'e basilmiyor. */
+add_action('init', function () {
+    add_post_type_support('page', 'excerpt');
+}, 20);
