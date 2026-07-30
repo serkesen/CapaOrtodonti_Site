@@ -87,7 +87,7 @@ add_action('wp_head', function () {
         'name' => 'Özel Çapa Ortodonti Diş Polikliniği',
         'alternateName' => 'Çapa Ortodonti',
         'url' => 'https://capaortodonti.com/',
-        'logo' => 'https://capaortodonti.com/wp-content/uploads/logo-capa.svg',
+        'logo' => 'https://capaortodonti.com/wp-content/uploads/capa-logo-schema-600.png',
         'image' => 'https://capaortodonti.com/wp-content/uploads/ortodonti.jpg',
         'telephone' => '+902125872424',
         'email' => 'info@capaortodonti.com',
@@ -899,4 +899,28 @@ add_action('template_redirect', function () {
    frontend'e basilmiyor. */
 add_action('init', function () {
     add_post_type_support('page', 'excerpt');
+}, 20);
+
+/* ------------------------------------------------------------------
+   capa-yeni-logo-2026 — 30 Tem 2026
+   Yeni marka logosu (capa-logo-schema-600.png) Yoast'in Organization
+   semasindaki logo alanina da uygulanir. Yoast ayar ekranindaki
+   "Kurulus logosu" alani hala eski dosyayi gosterebilir; bu filtre
+   ciktida onu ezer, dolayisiyla tek dogru kaynak burasidir.
+------------------------------------------------------------------ */
+add_filter('wpseo_schema_organization', function ($data) {
+    $logo = 'https://capaortodonti.com/wp-content/uploads/capa-logo-schema-600.png';
+    $lid  = 'https://capaortodonti.com/#/schema/logo/image/';
+    $data['logo'] = array(
+        '@type'      => 'ImageObject',
+        '@id'        => $lid,
+        'inLanguage' => get_bloginfo('language'),
+        'url'        => $logo,
+        'contentUrl' => $logo,
+        'width'      => 600,
+        'height'     => 600,
+        'caption'    => 'Çapa Ortodonti Estetik Diş Kliniği',
+    );
+    $data['image'] = array('@id' => $lid);
+    return $data;
 }, 20);
