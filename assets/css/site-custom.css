@@ -889,3 +889,7 @@ body.postid-8062 .dtf-hero-lead, body.postid-7024 .dtf-hero-lead, body.postid-48
    bu kural o yuzden burada, versiyon kontrollu dosyada yasiyor. */
 body .cmplz-cookiebanner .cmplz-message,
 body .cmplz-cookiebanner .cmplz-message p{ text-align:center !important; }
+
+/* Cerez afisi dikey konum %65 (30 Tem 2026) — Complianz Ozel CSS'teki
+   top:75% kuralini ezer; o alanin Kaydet'i guvenilmez oldugu icin burada. */
+html body .cmplz-cookiebanner{ top:65% !important; }
