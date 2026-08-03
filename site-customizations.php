@@ -924,3 +924,25 @@ add_filter('wpseo_schema_organization', function ($data) {
     $data['image'] = array('@id' => $lid);
     return $data;
 }, 20);
+
+/* capa-varsayilan-og - 30 Tem 2026
+   Bazi sayfalarin (ornek: /online-randevu/, /iletisim/) hic OG gorseli yoktu;
+   WhatsApp gibi yerlerde link ciplak metin olarak paylasiliyordu. Yoast yedek
+   OG gorseli ayarini SECENEK OKUMA aninda dolduruyoruz: DB yazmiyoruz, dolayisiyla
+   Yoast ayar ekraninin sessiz kaydetme sorunundan etkilenmez.
+   Bu YALNIZCA yedektir; kendi gorseli olan sayfalar degismez. */
+add_filter('option_wpseo_social', 'capa_og_varsayilan_doldur');
+add_filter('option_wpseo_titles', 'capa_og_varsayilan_doldur');
+function capa_og_varsayilan_doldur($deger) {
+    if (!is_array($deger)) {
+        return $deger;
+    }
+    $gorsel = 'https://capaortodonti.com/wp-content/uploads/capa-og-1200x630-1.png';
+    if (empty($deger['og_default_image'])) {
+        $deger['og_default_image'] = $gorsel;
+    }
+    if (empty($deger['og_default_image_id'])) {
+        $deger['og_default_image_id'] = 9379;
+    }
+    return $deger;
+}
