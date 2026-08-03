@@ -87,7 +87,7 @@ add_action('wp_head', function () {
         'name' => 'Özel Çapa Ortodonti Diş Polikliniği',
         'alternateName' => 'Çapa Ortodonti',
         'url' => 'https://capaortodonti.com/',
-        'logo' => 'https://capaortodonti.com/wp-content/uploads/capa-logo-schema-600.png',
+        'logo' => 'https://capaortodonti.com/wp-content/uploads/capa-logo-schema-600-v2.png',
         'image' => 'https://capaortodonti.com/wp-content/uploads/ortodonti.jpg',
         'telephone' => '+902125872424',
         'email' => 'info@capaortodonti.com',
@@ -903,13 +903,13 @@ add_action('init', function () {
 
 /* ------------------------------------------------------------------
    capa-yeni-logo-2026 — 30 Tem 2026
-   Yeni marka logosu (capa-logo-schema-600.png) Yoast'in Organization
+   Yeni marka logosu (capa-logo-schema-600-v2.png) Yoast'in Organization
    semasindaki logo alanina da uygulanir. Yoast ayar ekranindaki
    "Kurulus logosu" alani hala eski dosyayi gosterebilir; bu filtre
    ciktida onu ezer, dolayisiyla tek dogru kaynak burasidir.
 ------------------------------------------------------------------ */
 add_filter('wpseo_schema_organization', function ($data) {
-    $logo = 'https://capaortodonti.com/wp-content/uploads/capa-logo-schema-600.png';
+    $logo = 'https://capaortodonti.com/wp-content/uploads/capa-logo-schema-600-v2.png';
     $lid  = 'https://capaortodonti.com/#/schema/logo/image/';
     $data['logo'] = array(
         '@type'      => 'ImageObject',
@@ -919,7 +919,7 @@ add_filter('wpseo_schema_organization', function ($data) {
         'contentUrl' => $logo,
         'width'      => 600,
         'height'     => 600,
-        'caption'    => 'Çapa Ortodonti Estetik Diş Kliniği',
+        'caption'    => 'Çapa Ortodonti Ağız ve Diş Sağlığı Kliniği',
     );
     $data['image'] = array('@id' => $lid);
     return $data;
@@ -937,12 +937,19 @@ function capa_og_varsayilan_doldur($deger) {
     if (!is_array($deger)) {
         return $deger;
     }
-    $gorsel = 'https://capaortodonti.com/wp-content/uploads/capa-og-1200x630-1.png';
+    $gorsel = 'https://capaortodonti.com/wp-content/uploads/capa-og-1200x630-v2.png';
     if (empty($deger['og_default_image'])) {
         $deger['og_default_image'] = $gorsel;
     }
     if (empty($deger['og_default_image_id'])) {
-        $deger['og_default_image_id'] = 9379;
+        $deger['og_default_image_id'] = 9385;
     }
+    /* Yoast WebSite semasi: 'website_name' bozuk bir eski deger tutuyordu
+       ('Capa Ortodonti Dis Klinigi |' - sonda ayrac artigi), 'alternate_website_name'
+       ise eski marka adini. Ikisini de burada eziyoruz; website_name Polylang'in
+       cevirdigi site adindan geliyor, boylece EN/AR sayfalar kendi adini aliyor.
+       Yoast ayar ekranindan degistirmek ETKISIZDIR. */
+    $deger['website_name'] = get_bloginfo('name');
+    $deger['alternate_website_name'] = 'Çapa Ortodonti';
     return $deger;
 }
