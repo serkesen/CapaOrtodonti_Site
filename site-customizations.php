@@ -953,3 +953,36 @@ function capa_og_varsayilan_doldur($deger) {
     $deger['alternate_website_name'] = 'Çapa Ortodonti';
     return $deger;
 }
+
+
+/* ============================================================================
+ * capa-fa-preload — CLS duzeltmesi (4 Agu 2026)
+ *
+ * SORUN: PageSpeed (mobil) /online-randevu/ icin CLS 0,115 olcuyor. Kayan oge
+ * footer'daki ADRES widget'i (iki kayma: 0,067 + 0,048). Lighthouse'un
+ * gosterdigi tek neden: fa-solid-900.woff2 (Font Awesome ikon fontu).
+ *
+ * NEDEN: Elementor'un FA @font-face kurallari font-display:block kullaniyor —
+ * yani font gelene kadar ikonlar CIZILMIYOR, geldiginde yer kapliyor ve
+ * altindaki icerik asagi kayiyor. Font zinciri gec basliyor: HTML -> CSS
+ * (1245 ms) -> font (1333 ms). Sayfada hic preload yoktu.
+ *
+ * COZUM: iki fa-solid-900.woff2 kopyasini da erken cek. (Iki kopya var:
+ * Elementor'unki ve capa-randevu eklentisininki — ikisi de PSI'in suclu
+ * listesinde. Kopyayi tekillestirmek ayri bir is.)
+ *
+ * ⚠ crossorigin ZORUNLU: font istekleri CORS modunda yapilir, bayrak yoksa
+ * tarayici preload'u kullanmaz ve fontu IKI KEZ indirir.
+ * ========================================================================== */
+add_action('wp_head', function () {
+    if (is_admin()) return;
+    $liste = array(
+        'elementor/assets/lib/font-awesome/webfonts/fa-solid-900.woff2',
+        'capa-randevu/assets/fonts/fa-solid-900.woff2',
+    );
+    foreach ($liste as $rel) {
+        if (!file_exists(WP_PLUGIN_DIR . '/' . $rel)) continue;
+        echo '<link rel="preload" href="' . esc_url(plugins_url($rel))
+           . '" as="font" type="font/woff2" crossorigin>' . "\n";
+    }
+}, 1);
