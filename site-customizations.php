@@ -249,7 +249,9 @@ add_filter('wpseo_metadesc', function ($desc) {
         /* 28 Tem 2026: bu sayfaya dusen aramalarin cogu "çapa diş randevu" ailesi —
            randevu niyetli ama bir kismi Çapa Dis Fakultesi'ni ariyor. Ozel klinik
            oldugumuzu net soylemek hem dogru hem de tiklama kalitesini yukseltiyor. */
-        return 'Fatih Şehremini\'de özel diş kliniği. Gün ve saati seçip 1 dakikada online randevu alın veya (0212) 587 24 24\'ü arayın. Ortodonti ve genel diş tedavileri.';
+        /* 4 Agu 2026: 'ozel' kelimesi cumlenin ortasindaydi, Google'in gosterdigi
+           ilk satirda gozden kaciyordu. One alindi — fakulte karisikligini kesmek icin. */
+        return 'Özel diş kliniği — Fatih Şehremini. Gün ve saati seçip 1 dakikada online randevu alın veya (0212) 587 24 24\'ü arayın. Ortodonti ve genel diş tedavileri.';
     }
     return $desc;
 });
