@@ -255,7 +255,10 @@ add_filter('wpseo_metadesc', function ($desc) {
 });
 add_filter('wpseo_title', function ($title) {
     if (is_page(8830)) {
-        return 'Çapa Ortodonti — Online Randevu Al | Çapa\'da Diş Randevusu';
+        /* 4 Agu 2026: gelen randevularin bir kismi Istanbul Universitesi Capa
+           Dis Fakultesi sanip randevu aliyor ve teyit aramasinda iptal ediyordu.
+           Basliktaki ayirt edici kelime OZEL — kurumla karismayi baslikta kesiyoruz. */
+        return 'Online Randevu Al | Özel Çapa Ortodonti Ağız ve Diş Sağlığı Kliniği';
     }
     return $title;
 });
