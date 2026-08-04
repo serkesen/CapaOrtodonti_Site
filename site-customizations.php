@@ -991,3 +991,81 @@ add_action('wp_head', function () {
            . '" as="font" type="font/woff2" crossorigin>' . "\n";
     }
 }, 1);
+
+
+/* ============================================================================
+ * capa-guvenlik-2026-08-04 — güvenlik denetimi düzeltmeleri
+ * Tam rapor: claude/guvenlik-denetimi-2026-08-04.md
+ *
+ * 1) Yonetici kullanici adi sizintisi (YUKSEK)
+ *    /wp-json/wp/v2/users -> 200 doneyordu ve yonetici kullanici adini
+ *    veriyordu. /?author=1 ayni bilgiyi yazar arsivi uzerinden veriyordu.
+ *    Kullanici adi bilinen bir site, parola denemesi icin acik hedeftir.
+ *    ⚠ Ucu TAMAMEN kapatmiyoruz — Elementor/Yoast yonetici ekranlari bu ucu
+ *    kullaniyor. Yalniz GIRIS YAPMAMIS istekler icin kaldiriliyor.
+ *
+ * 2) Guvenlik basliklari (ORTA)
+ *    Yanitta tek bir guvenlik basligi yoktu. Clickjacking, MIME-sniffing ve
+ *    HTTPS dusurme yuzeyi aciktı.
+ *    ⚠ Content-Security-Policy BILEREK EKLENMEDI — Elementor, GTM, GA4,
+ *    Clarity ve Complianz satir ici script kullaniyor; dar bir CSP siteyi
+ *    kirar. Ayri bir is olarak, olcerek yazilmali.
+ *    ⚠ HSTS 180 gun, includeSubDomains YOK — alt alan adlarinda TLS
+ *    durumunu dogrulamadik; kapsama almak onlari erisilemez yapabilir.
+ *
+ * 3) Surum sizintisi (ORTA)
+ *    <meta name="generator" content="WordPress 6.8.3"> saldirgana hangi
+ *    exploitin ise yarayacagini soyluyordu. RSD/wlwmanifest baglantilari da
+ *    parmak izi verir ve bu sitede kullanilmiyor.
+ *    ⚠ Elementor'un kendi generator etiketi BU BLOKLA KALKMAZ — ayri is.
+ * ========================================================================== */
+
+/* 1a — REST kullanici ucu: yalniz giris yapmamislara kapali. */
+add_filter('rest_endpoints', function ($endpoints) {
+    if (is_user_logged_in()) {
+        return $endpoints;
+    }
+    unset($endpoints['/wp/v2/users']);
+    unset($endpoints['/wp/v2/users/(?P<id>[\d]+)']);
+    return $endpoints;
+});
+
+/* 1b — /?author=N ve yazar arsivi: giris yapmamisa 404. Bu arsivler zaten
+   30 Tem'de noindex yapilmisti; kullanici adi sizdirmaktan baska islevi yok. */
+add_action('template_redirect', function () {
+    if (is_admin() || is_user_logged_in()) {
+        return;
+    }
+    if (is_author() || isset($_GET['author'])) {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header(404);
+        nocache_headers();
+    }
+}, 0);
+
+/* 1c — oEmbed yanitindan yazar bilgisi cikarilir. */
+add_filter('oembed_response_data', function ($data) {
+    unset($data['author_name'], $data['author_url']);
+    return $data;
+});
+
+/* 2 — Guvenlik basliklari. */
+add_action('send_headers', function () {
+    if (is_admin()) {
+        return;
+    }
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+    header('Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()');
+    if (is_ssl()) {
+        header('Strict-Transport-Security: max-age=15552000');
+    }
+});
+
+/* 3 — Surum ve parmak izi sizintisi. */
+remove_action('wp_head', 'wp_generator');
+add_filter('the_generator', '__return_empty_string');
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
