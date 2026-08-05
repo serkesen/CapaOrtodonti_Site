@@ -1069,3 +1069,10 @@ remove_action('wp_head', 'wp_generator');
 add_filter('the_generator', '__return_empty_string');
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
+
+/* ── Meta (Facebook) alan adi dogrulama — 5 Agu 2026 ────────────────
+   Meta Business > Brand Safety > Domains dogrulamasi icin.
+   iOS/ATT sonrasi Aggregated Event Measurement bu dogrulamaya bagli. */
+add_action( 'wp_head', function () {
+    echo '<meta name="facebook-domain-verification" content="2ttw433h97be622gpisulioz9pwon6" />' . "\n";
+}, 1 );
