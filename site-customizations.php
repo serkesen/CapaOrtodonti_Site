@@ -119,11 +119,11 @@ add_action('wp_head', function () {
 if (!function_exists('capa_faqs')) {
     function capa_faqs() {
         return array(
+            /* 23 Eki 2026 — mevzuat (RG 12.11.2025 m.5/1-m): fiyat/maliyet sorulari cikarildi
+               (8062: 3 soru + 1 cumle; 7024, 4836, 4204, 4857: birer soru). Gorunur SSS postlarda
+               Elementor HTML blogunda — orada da ayni sorular silindi. */
             8062 => array(
-                array('Diş teli fiyatları neden kliniğe göre değişir?', 'Braket sistemi, tahmini tedavi süresi, hekimin uzmanlığı ve tedaviye dahil edilen hizmetler (kontroller, röntgen, retainer) her klinikte farklı olduğu için toplam maliyet de değişir.'),
-                array('Tek çene diş teli daha mı ekonomiktir?', 'Kapsam daraldığı için tek çene tedavisi genellikle daha düşük maliyetlidir. Ancak dişlerin doğru kapanışı için çoğu vakada çift çene tedavisi önerilir; bu karar muayenede verilir.'),
-                array('Diş teli tedavisi ne kadar sürer?', 'Vakanın zorluğuna göre değişmekle birlikte tedavi çoğunlukla 12–24 ay arasında sürer. Süre uzadıkça kontrol sayısı ve toplam maliyet de etkilenir.'),
-                array('Şeffaf plak diş telinden pahalı mıdır?', 'Şeffaf plak sistemleri, üretim teknolojisi nedeniyle genellikle metal braketlere göre daha yüksek maliyetlidir. Size uygun seçenek muayenede belirlenir.'),
+                array('Diş teli tedavisi ne kadar sürer?', 'Vakanın zorluğuna göre değişmekle birlikte tedavi çoğunlukla 12–24 ay arasında sürer.'),
                 array('Diş teli için hangi bölüme gidilir?', 'Diş teli tedavisi ortodonti bölümüne aittir; tedaviyi ortodonti uzmanı (ortodontist) planlar ve yürütür.'),
                 array('Devlet hastanelerinde diş teli takılıyor mu?', 'Bazı devlet hastanelerinde ortodonti bölümleri bulunur; sıra süreleri ve yaş kriterleri değişkendir. Özel klinikte randevu esnekliği ve tedavi süreci farklı işler.'),
             ),
@@ -131,7 +131,6 @@ if (!function_exists('capa_faqs')) {
                 array('Şeffaf plak gerçekten görünmez mi?', 'Yakın mesafede fark edilebilir ancak sosyal mesafede neredeyse görünmezdir; bu yüzden özellikle yetişkinler tarafından tercih edilir.'),
                 array('Şeffaf plak günde kaç saat takılmalı?', 'Etkili bir tedavi için günde yaklaşık 20-22 saat takılması önerilir; yemek ve diş fırçalama sırasında çıkarılır.'),
                 array('Şeffaf plak tedavisi ne kadar sürer?', 'Vakanın zorluğuna göre değişmekle birlikte çoğunlukla 6-18 ay arasındadır.'),
-                array('Şeffaf plak diş telinden pahalı mıdır?', 'Üretim teknolojisi nedeniyle genellikle metal braketlere göre daha yüksek maliyetlidir. Size uygun seçenek muayenede belirlenir.'),
                 array('Her ortodontik sorun şeffaf plakla çözülür mü?', 'Hayır. Karmaşık iskeletsel vakalarda braket veya kombine tedavi gerekebilir; uygunluk muayenede değerlendirilir.'),
                 array('Şeffaf plak konuşmayı etkiler mi?', 'İlk günlerde kısa bir alışma süreci olabilir, ardından konuşma normale döner.'),
             ),
@@ -141,7 +140,6 @@ if (!function_exists('capa_faqs')) {
                 array('Bonding kaç yıl dayanır?', 'Ağız bakımına ve beslenme alışkanlıklarına bağlı olarak genellikle birkaç yıl kullanılabilir; renklenme veya kırılma durumunda yenilenebilir.'),
                 array('Bonding işlemi rahat mıdır?', 'Çoğu vakada diş kesimi gerektirmediği için genellikle rahat bir işlemdir ve tek seansta tamamlanabilir.'),
                 array('Bonding hangi durumlarda uygulanır?', 'Diş arası boşluk, kırık veya çatlak diş, renk ve şekil bozuklukları ile kısa görünen dişlerde tercih edilebilir.'),
-                array('Bonding fiyatı neye göre değişir?', 'İşlem yapılan diş sayısı, vakanın kapsamı ve kullanılan malzemeye göre değişir; net fiyat muayenede belirlenir.'),
             ),
             // --- Tedavi SAYFALARI (gece paketi, 18 Tem 2026) ---
             4204 => array( // implant-tedavisi
@@ -149,7 +147,6 @@ if (!function_exists('capa_faqs')) {
                 array('İmplant tedavisi kaç seansta tamamlanır?', 'Genellikle implantın yerleştirilmesi tek seansta yapılır; kemikle kaynaşma süreci (osseointegrasyon) 2-4 ay sürer ve ardından kalıcı protez takılır.'),
                 array('İmplant sırasında ağrı olur mu?', 'İşlem lokal anestezi altında yapılır; çoğu hasta işlem sırasında ağrı hissetmez, sonrasındaki hafif hassasiyet hekimin önerdiği yöntemlerle kontrol edilir.'),
                 array('Kemik yetersizse implant yapılabilir mi?', 'Kemik hacmi yetersiz olduğunda greft (kemik tozu) veya sinüs yükseltme gibi ek işlemlerle implant çoğu vakada mümkün olur; uygunluk muayene ve görüntülemeyle belirlenir.'),
-                array('İmplant fiyatları neye göre belirlenir?', 'İmplant sayısı, kullanılan marka, kemik durumu ve ek işlem gereksinimine göre değişir; net planlama ücretsiz ilk değerlendirme sonrası yapılır.'),
             ),
             3607 => array( // ortodonti
                 array('Ortodonti tedavisi hangi yaşta başlamalı?', 'İlk ortodontik kontrol için ideal yaş 7 civarıdır; tedavi ihtiyacı ve zamanlaması hekim tarafından çocuğun gelişimine göre planlanır. Yetişkinlerde ise yaş sınırı yoktur.'),
@@ -170,7 +167,6 @@ if (!function_exists('capa_faqs')) {
                 array('Gülüş tasarımında hangi işlemler uygulanır?', 'İhtiyaca göre beyazlatma, bonding, laminate/zirkonyum kaplama, diş eti düzenlemesi ve ortodontik düzeltmeler kombinlenebilir.'),
                 array('Gülüş tasarımı kaç seans sürer?', 'Kapsama göre değişir; yalnız beyazlatma ve bonding içeren planlar birkaç seansta, kaplama içeren kapsamlı planlar birkaç haftada tamamlanabilir.'),
                 array('Sonuç doğal görünür mü?', 'Amaç yüz hatlarınıza uyumlu, doğal bir görünümdür; tasarım aşamasında dijital önizleme ve prova ile birlikte karar verilir.'),
-                array('Gülüş tasarımı fiyatı neye göre belirlenir?', 'Uygulanacak işlemlerin türü ve diş sayısına göre değişir; net plan ve bilgilendirme ücretsiz ilk muayenede yapılır.'),
             ),
             5635 => array( // cocuk-dis-hekimligi-pedodonti-istanbul
                 array('Çocuğumu ilk kez ne zaman diş hekimine getirmeliyim?', 'İlk diş sürdükten sonra, en geç 1 yaş civarında ilk kontrol önerilir; erken tanışma çocuğun diş hekimi korkusu geliştirmesini önler.'),
