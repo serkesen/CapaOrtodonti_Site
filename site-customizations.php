@@ -144,7 +144,7 @@ if (!function_exists('capa_faqs')) {
             // --- Tedavi SAYFALARI (gece paketi, 18 Tem 2026) ---
             4204 => array( // implant-tedavisi
                 array('İmplant tedavisi nedir?', 'İmplant, eksik dişlerin yerine çene kemiğine yerleştirilen titanyum vida üzerine protez diş uygulanmasıdır; komşu dişlere zarar vermeden kalıcı bir çözüm sunar.'),
-                array('İmplant tedavisi kaç seansta tamamlanır?', 'Genellikle implantın yerleştirilmesi tek seansta yapılır; kemikle kaynaşma süreci (osseointegrasyon) 2-4 ay sürer ve ardından kalıcı protez takılır.'),
+                array('İmplant tedavisi kaç seansta tamamlanır?', 'Genellikle implantın yerleştirilmesi tek seansta yapılır; kemikle kaynaşma süreci (osseointegrasyon) genellikle 3-6 ay sürer ve ardından kalıcı protez takılır.'),
                 array('İmplant sırasında ağrı olur mu?', 'İşlem lokal anestezi altında yapılır; çoğu hasta işlem sırasında ağrı hissetmez, sonrasındaki hafif hassasiyet hekimin önerdiği yöntemlerle kontrol edilir.'),
                 array('Kemik yetersizse implant yapılabilir mi?', 'Kemik hacmi yetersiz olduğunda greft (kemik tozu) veya sinüs yükseltme gibi ek işlemlerle implant çoğu vakada mümkün olur; uygunluk muayene ve görüntülemeyle belirlenir.'),
             ),
