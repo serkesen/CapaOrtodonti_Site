@@ -718,7 +718,7 @@ if (!function_exists('capa_ic_link_blogu')) {
                   'capa' => 'Ortodonti tedavisi',
                   'not'  => 'Diş teli, şeffaf plak ve çocuk ortodontisi seçeneklerinin tamamı'),
             array('yol' => '/seffaf-plak-tedavisi-invisalign/', 'slug' => 'seffaf-plak-tedavisi-invisalign',
-                  'capa' => 'Şeffaf plak (Invisalign) tedavisi',
+                  'capa' => 'Şeffaf plak tedavisi', // 23 Eki 2026 mevzuat m.5/1-h: marka adi cikarildi
                   'not'  => 'Görünmez plakla tedavi kimlere uygun, nasıl ilerler'),
             array('yol' => '/dis-teli-fiyatlari-belirlenmesi-ve-etkileyen-faktorler/',
                   'slug' => 'dis-teli-fiyatlari-belirlenmesi-ve-etkileyen-faktorler',
