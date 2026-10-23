@@ -570,7 +570,10 @@ function capa_randevu_ozet_sayactan(WP_REST_Request $req) {
    Kapsam: tanitim blogu + Yoast meta + cift H1 onlemi. (SSS/schema yok - 28 Tem)
    ============================================================ */
 if (!defined('CAPA_AI_PAGE'))    define('CAPA_AI_PAGE', 9185);
-if (!defined('CAPA_AI_TANITIM')) define('CAPA_AI_TANITIM', '3607,7024'); // ortodonti sayfasi + seffaf plak postu
+/* 23 Eki 2026 — mevzuat (Saglik Tanitim Yonetmeligi, RG 12.11.2025, m.4/d + m.5/1-c):
+   "1 numarali tercih" iddiasi reklam tanimina giriyor. Tanitim blogu KAPATILDI,
+   sayfa 9185 /ortodonti/'ye 301'leniyor (capa_birlesme_yonlendir). Eski deger: '3607,7024'. */
+if (!defined('CAPA_AI_TANITIM')) define('CAPA_AI_TANITIM', '');
 
 if (!function_exists('capa_blok_oku')) {
     function capa_blok_oku($ad) {
@@ -601,6 +604,7 @@ if (!function_exists('capa_ai_faqs')) {
    ⚠ Elementor sayfalarinda the_content birden fazla kez tetiklenir -> static bayrak
    yanlis cagriyi isaretliyordu. Bunun yerine icerikte imza aranir, priority 999. */
 add_filter('the_content', function ($content) {
+    if (CAPA_AI_TANITIM === '') return $content;
     if (!is_singular(array('post', 'page')) || !in_the_loop() || !is_main_query()) return $content;
     $hedef = array_map('intval', explode(',', CAPA_AI_TANITIM));
     if (!in_array((int) get_the_ID(), $hedef, true)) return $content;
@@ -815,6 +819,9 @@ if (!function_exists('capa_birlesme_yonlendir')) {
             // iceriyordu. Sayfanin varlik sebebi fiyat oldugu icin icerik
             // temizligi degil yonlendirme secildi.
             'dental-implants-cost'              => '/en/implant-treatment/',
+            // 23 Eki 2026 — mevzuat (RG 12.11.2025, m.4/d + m.5/1-c): yapay zeka
+            // "1 numarali tercih" sayfasi (9185). Icerik WP'de duruyor, 301 ile erisime kapali.
+            'yapay-zeka-ortodonti-onerisi'      => '/ortodonti/',
         );
         $slug = get_post_field('post_name', get_queried_object_id());
         if ($slug && isset($harita[$slug])) {
@@ -829,7 +836,7 @@ add_action('template_redirect', 'capa_birlesme_yonlendir', 1);
 add_filter('wpseo_exclude_from_sitemap_by_post_ids', function ($ids) {
     $slugler = array('dis-teli-tedavisi', 'gorunmeyen-dis-teli',
                      'eriskin-tel-tedavisi', 'retainer-nedir-pekistirme-tedavisi',
-                     'dental-implants-cost');
+                     'dental-implants-cost', 'yapay-zeka-ortodonti-onerisi');
     foreach ($slugler as $s) {
         $p = get_page_by_path($s, OBJECT, array('post', 'page'));
         if ($p) $ids[] = $p->ID;
