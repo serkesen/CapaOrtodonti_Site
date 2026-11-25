@@ -1079,3 +1079,36 @@ remove_action('wp_head', 'wlwmanifest_link');
 add_action( 'wp_head', function () {
     echo '<meta name="facebook-domain-verification" content="2ttw433h97be622gpisulioz9pwon6" />' . "\n";
 }, 1 );
+
+/* ============================================================================
+ * capa-editor-guncelleme — Mevzuat m.5/1-ı (25 Kas 2026)
+ *
+ * RG 12.11.2025 Saglik Hizmetlerinde Tanitim ve Bilgilendirme Yonetmeligi:
+ * saglik bilgisi iceren icerikte son guncelleme tarihi ve editor/iletisim
+ * bilgisi bulunmali. Blog yazilari + "Tedaviler" (24) kategorisindeki tedavi
+ * sayfalarinin icerik sonuna tek satir eklenir (priority 15: SSS'den sonra,
+ * yazi sonu randevu CTA'sindan once).
+ *
+ * Tarih = WordPress son degistirilme tarihi (gercek tarih; sayfa her
+ * duzenlendiginde kendiliginden guncellenir). Yalniz Turkce sayfalar.
+ * Single-post sablonundaki eski gizli post-info satiri (yayin tarihini
+ * "Guncellenme Tarihi" diye gosteren) CSS ile gizli kalmaya devam eder.
+ * ========================================================================== */
+add_filter('the_content', function ($content) {
+    if (is_admin() || is_feed()) return $content;
+    $yazi  = is_singular('post');
+    $sayfa = is_singular('page') && has_category(24, get_queried_object_id());
+    if (!$yazi && !$sayfa) return $content;
+    if (function_exists('pll_current_language') && pll_current_language() !== 'tr') return $content;
+    $id = get_the_ID();
+    if ($id !== get_queried_object_id()) return $content;
+    static $done = array();
+    if (isset($done[$id])) return $content;
+    $done[$id] = true;
+    $tarih = date_i18n('j F Y', get_post_modified_time('U', false, $id));
+    $satir = '<p class="capa-editor-bilgi">Son güncelleme: <time datetime="'
+        . esc_attr(get_post_modified_time('c', false, $id)) . '">' . esc_html($tarih) . '</time>'
+        . ' · Editör: Dr. Dt. Semra Can Erkesen · '
+        . '<a href="mailto:info@capaortodonti.com">info@capaortodonti.com</a></p>';
+    return $content . $satir;
+}, 15);

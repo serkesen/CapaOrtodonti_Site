@@ -893,3 +893,7 @@ body .cmplz-cookiebanner .cmplz-message p{ text-align:center !important; }
 /* Cerez afisi dikey konum %65 (30 Tem 2026) — Complianz Ozel CSS'teki
    top:75% kuralini ezer; o alanin Kaydet'i guvenilmez oldugu icin burada. */
 html body .cmplz-cookiebanner{ top:65% !important; }
+
+/* capa-editor-guncelleme (25 Kas 2026) — mevzuat m.5/1-i satiri */
+.capa-editor-bilgi{margin:28px 0 8px !important;padding-top:14px;border-top:1px solid #dfe7f0;color:#5b6c83 !important;font-size:13.5px !important;line-height:1.6 !important;text-align:left}
+.capa-editor-bilgi a{color:#124e91 !important;text-decoration:none}
